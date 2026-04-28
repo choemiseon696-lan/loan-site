@@ -50,13 +50,13 @@ body{
   font-weight:bold;
 }
 
-/* 🔥 실시간 (수정됨) */
+/* 🔥 실시간 */
 .live{
   background:#fff;
-  margin:20px 15px; /* 👉 위 여백 추가 */
+  margin:20px 15px;
   padding:20px;
   border-radius:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.08); /* 👉 카드 느낌 */
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
 .live-title{
@@ -68,9 +68,14 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:12px 0;
+  padding:14px 0; /* 👉 간격 증가 */
   border-bottom:1px solid #eee;
   font-size:13px;
+}
+
+/* 👉 마지막 줄 밑줄 제거 */
+.live-item:last-child{
+  border-bottom:none;
 }
 
 .live-left{
@@ -133,7 +138,7 @@ body{
 
 <!-- 🔥 실시간 -->
 <div class="live">
-  <div class="live-title">실시간 신청 현황</div> <!-- 👉 제목 추가 -->
+  <div class="live-title">실시간 신청 현황</div>
   <div id="list"></div>
 </div>
 
@@ -172,12 +177,12 @@ function addItem(){
     </div>
   `;
 
-const list=document.getElementById("list");
-list.prepend(div);
+  const list=document.getElementById("list");
+  list.prepend(div);
 
-if(list.children.length>5){
-list.removeChild(list.lastChild);
-}
+  if(list.children.length>5){
+    list.removeChild(list.lastChild);
+  }
 }
 
 for(let i=0;i<3;i++) addItem();
