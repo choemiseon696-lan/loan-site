@@ -7,65 +7,116 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:sans-serif;background:#f5f5f5;}
-
-.wrap{max-width:480px;margin:auto;}
-
-/* 상단 이미지 */
-.main-img{
-  width:100%;
-  display:block;
+body{
+  font-family: 'Apple SD Gothic Neo', sans-serif;
+  background:#f3f6fb;
 }
 
-/* 입력폼 */
+/* 전체 */
+.wrap{
+  max-width:480px;
+  margin:auto;
+}
+
+/* 🔥 상단 배너 */
+.hero{
+  background:linear-gradient(135deg,#2d8cff,#1b5ed7);
+  color:#fff;
+  padding:40px 20px;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:22px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  font-size:14px;
+  opacity:0.9;
+}
+
+/* 🔥 핵심 포인트 */
+.features{
+  display:flex;
+  justify-content:space-between;
+  background:#fff;
+  margin-top:-20px;
+  border-radius:15px;
+  padding:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.feature{
+  text-align:center;
+  font-size:12px;
+}
+
+.feature strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:5px;
+}
+
+/* 🔥 신청폼 */
 .form-box{
   background:#fff;
-  margin:10px;
-  padding:15px;
-  border-radius:12px;
+  margin:15px;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
 .form-box h3{
-  margin-bottom:10px;
+  margin-bottom:15px;
+  font-size:18px;
 }
 
 .input{
   width:100%;
-  padding:12px;
+  padding:13px;
   margin-bottom:10px;
   border:1px solid #ddd;
-  border-radius:8px;
+  border-radius:10px;
+  font-size:14px;
 }
 
 .submit-btn{
   width:100%;
-  padding:14px;
-  background:#2d8cff;
+  padding:15px;
+  background:linear-gradient(135deg,#2d8cff,#1b5ed7);
   color:#fff;
   border:none;
   border-radius:10px;
   font-weight:bold;
+  font-size:15px;
 }
 
-/* 실시간 */
+/* 🔥 실시간 */
 .live{
   background:#fff;
-  margin:10px;
-  padding:15px;
-  border-radius:12px;
+  margin:15px;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.live-title{
+  font-weight:bold;
+  margin-bottom:10px;
 }
 
 .live-item{
   display:flex;
   justify-content:space-between;
-  padding:8px;
+  padding:10px 0;
   border-bottom:1px solid #eee;
   font-size:13px;
 }
 
 .badge{
-  padding:3px 6px;
-  border-radius:6px;
+  padding:4px 8px;
+  border-radius:8px;
   color:#fff;
   font-size:11px;
 }
@@ -73,28 +124,6 @@ body{font-family:sans-serif;background:#f5f5f5;}
 .wait{background:#f0ad4e;}
 .done{background:#5bc0de;}
 .ok{background:#5cb85c;}
-
-/* 하단 버튼 */
-.cta-box{
-  position:fixed;
-  bottom:0;
-  width:100%;
-  max-width:480px;
-  background:#fff;
-  padding:10px;
-}
-
-.btn{
-  display:block;
-  text-align:center;
-  padding:14px;
-  border-radius:10px;
-  font-weight:bold;
-  text-decoration:none;
-  margin-bottom:8px;
-}
-
-.kakao{background:#ffcc00;color:#000;}
 </style>
 </head>
 
@@ -102,12 +131,31 @@ body{font-family:sans-serif;background:#f5f5f5;}
 
 <div class="wrap">
 
-<!-- 🔥 상단 이미지 -->
-<img src="https://choemiseon696-lan.github.io/loan-site/main.png" class="main-img">
+<!-- 🔥 상단 -->
+<div class="hero">
+  <h1>아몬대출중계사</h1>
+  <p>무서류 · 당일승인 · 신용무관</p>
+</div>
 
-<!-- 🔥 입력폼 -->
+<!-- 🔥 핵심 포인트 -->
+<div class="features">
+  <div class="feature">
+    <strong>무서류</strong>
+    간편 신청
+  </div>
+  <div class="feature">
+    <strong>당일 승인</strong>
+    빠른 진행
+  </div>
+  <div class="feature">
+    <strong>신용무관</strong>
+    가능
+  </div>
+</div>
+
+<!-- 🔥 신청폼 -->
 <div class="form-box">
-  <h3>빠른 상담 신청</h3>
+  <h3>간편 상담 신청</h3>
 
   <input class="input" placeholder="이름">
   <input class="input" placeholder="생년월일 (예: 900101)">
@@ -126,20 +174,15 @@ body{font-family:sans-serif;background:#f5f5f5;}
 
 <!-- 🔥 실시간 -->
 <div class="live">
-  <div style="font-weight:bold; margin-bottom:10px;">최근 신청 현황</div>
+  <div class="live-title">최근 신청 현황</div>
   <div id="list"></div>
 </div>
 
 </div>
 
-<!-- 🔥 하단 버튼 -->
-<div class="cta-box">
-  <a href="https://open.kakao.com/o/너링크" class="btn kakao">카카오톡 상담하기</a>
-</div>
-
 <script>
 const names=["김**","이**","박**","최**","정**"];
-const amounts=["500만원","1000만원","1200만원","100만원"];
+const amounts=["100만원","150만원","200만원","300만원"];
 const status=[
 {text:"상담중",class:"wait"},
 {text:"신청완료",class:"done"},
