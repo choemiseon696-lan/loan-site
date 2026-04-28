@@ -8,6 +8,115 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
+  font-family:'Apple SD Gothic Neo',sans-serif;
+  background:#f3f6fb;
+}
+
+.wrap{
+  max-width:480px;
+  margin:auto;
+}
+
+/* 이미지 */
+.banner{
+  position:relative;
+}
+
+.banner img{
+  width:100%;
+  display:block;
+}
+
+/* 실시간 */
+.live{
+  background:#fff;
+  margin:15px;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.live-title{
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.live-item{
+  display:flex;
+  justify-content:space-between;
+  padding:8px 0;
+  font-size:13px;
+  border-bottom:1px solid #eee;
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+<!-- 🔥 이미지 + 클릭 영역 -->
+<div class="banner">
+
+  <img src="https://choemiseon696-lan.github.io/loan-site/main.png">
+
+  <!-- 🔥 빠른 상담 신청 버튼 (이미지 위치 맞춰서 조절 가능) -->
+  <a href="https://open.kakao.com/o/너링크"
+  style="
+    position:absolute;
+    top:65%;
+    left:10%;
+    width:80%;
+    height:8%;
+    z-index:10;
+    display:block;
+  "></a>
+
+</div>
+
+<!-- 🔥 실시간 -->
+<div class="live">
+  <div class="live-title">최근 신청 현황</div>
+  <div id="list"></div>
+</div>
+
+</div>
+
+<script>
+const names=["김**","이**","박**","최**","정**"];
+const amounts=["100만원","150만원","200만원","300만원"];
+
+function addItem(){
+  const name=names[Math.floor(Math.random()*names.length)];
+  const amount=amounts[Math.floor(Math.random()*amounts.length)];
+
+  const div=document.createElement("div");
+  div.className="live-item";
+  div.innerHTML = `<div>${name} / ${amount}</div><div>신청완료</div>`;
+
+  const list=document.getElementById("list");
+  list.prepend(div);
+
+  if(list.children.length>6){
+    list.removeChild(list.lastChild);
+  }
+}
+
+for(let i=0;i<3;i++) addItem();
+setInterval(addItem,3000);
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>아몬대출중계사</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
   font-family: 'Apple SD Gothic Neo', sans-serif;
   background:#f3f6fb;
 }
