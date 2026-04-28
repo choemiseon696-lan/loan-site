@@ -3,66 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>간편 대출 상담</title>
+<title>아몬대출중계사</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:-apple-system, BlinkMacSystemFont, sans-serif;background:#f2f3f7;}
+body{font-family:sans-serif;background:#f5f5f5;}
 
-.container{max-width:480px;margin:auto;}
+.wrap{max-width:480px;margin:auto;position:relative;}
 
-/* 상단 */
-.hero{
-  background:url('https://choemiseon696-lan.github.io/loan-site/main.png') center/cover no-repeat;
-  padding:60px 20px;
-  color:#fff;
-  text-align:center;
-}
-  padding:60px 20px;
-  color:#fff;
-  text-align:center;
-}
-.hero h1{font-size:24px;font-weight:700;margin-bottom:10px;}
-.hero p{font-size:14px;opacity:0.9;}
-
-.cta{
+/* 상단 이미지 */
+.main-img{
+  width:100%;
   display:block;
-  margin-top:20px;
-  padding:15px;
-  border-radius:12px;
+}
+
+/* 버튼 영역 */
+.cta-box{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  max-width:480px;
+  background:#fff;
+  padding:10px;
+  box-shadow:0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.btn{
+  display:block;
+  text-align:center;
+  padding:14px;
+  border-radius:10px;
   font-weight:bold;
   text-decoration:none;
+  margin-bottom:8px;
 }
+
 .kakao{background:#ffcc00;color:#000;}
 .apply{background:#2d8cff;color:#fff;}
 
-/* 강조박스 */
-.highlight{
-  margin:15px;
-  background:#fff;
-  border-radius:14px;
-  padding:15px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.05);
-}
-.highlight div{margin-bottom:8px;font-size:14px;}
-
 /* 실시간 */
 .live{
-  margin:15px;
   background:#fff;
-  border-radius:14px;
+  margin:10px;
   padding:15px;
+  border-radius:12px;
 }
 .live-title{font-weight:bold;margin-bottom:10px;}
 
 .live-item{
   display:flex;
   justify-content:space-between;
-  padding:10px;
+  padding:8px;
   border-bottom:1px solid #eee;
+  font-size:13px;
 }
 .badge{
-  padding:4px 8px;
+  padding:3px 6px;
   border-radius:6px;
   color:#fff;
   font-size:11px;
@@ -70,46 +67,15 @@ body{font-family:-apple-system, BlinkMacSystemFont, sans-serif;background:#f2f3f
 .wait{background:#f0ad4e;}
 .done{background:#5bc0de;}
 .ok{background:#5cb85c;}
-
-/* 후기 */
-.review{
-  margin:15px;
-}
-.review-box{
-  background:#fff;
-  padding:12px;
-  border-radius:10px;
-  margin-bottom:10px;
-  font-size:13px;
-  box-shadow:0 2px 6px rgba(0,0,0,0.05);
-}
-
-/* 하단 버튼 */
-.footer{
-  padding:20px;
-}
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="wrap">
 
-<!-- 🔥 상단 -->
-<div class="hero">
-  <h1>무직자 / 저신용자 상담 가능</h1>
-  <p>조건에 따라 빠른 안내 도와드립니다</p>
-
-  <a href="https://open.kakao.com/o/너링크" class="cta kakao">무료 상담하기</a>
-  <a href="https://creatorlink.net/너링크" class="cta apply">빠른 신청</a>
-</div>
-
-<!-- 🔥 강조 -->
-<div class="highlight">
-  <div>✔ 선입금 없음</div>
-  <div>✔ 간편 진행</div>
-  <div>✔ 빠른 상담 가능</div>
-</div>
+<!-- 🔥 상단 메인이미지 -->
+<img src="https://choemiseon696-lan.github.io/loan-site/main.png
 
 <!-- 🔥 실시간 -->
 <div class="live">
@@ -117,25 +83,19 @@ body{font-family:-apple-system, BlinkMacSystemFont, sans-serif;background:#f2f3f
   <div id="list"></div>
 </div>
 
-<!-- 🔥 후기 -->
-<div class="review">
-  <div class="review-box">“빠르게 상담받고 해결됐어요”</div>
-  <div class="review-box">“친절하게 설명해줘서 좋았습니다”</div>
-  <div class="review-box">“생각보다 간단해서 놀랐어요”</div>
 </div>
 
-<!-- 🔥 하단 -->
-<div class="footer">
-  <a href="https://open.kakao.com/o/너링크" class="cta kakao">무료 상담 받기</a>
-</div>
-
+<!-- 🔥 하단 고정 버튼 -->
+<div class="cta-box">
+  <a href="https://open.kakao.com/o/너링크" class="btn kakao">카카오톡 상담하기</a>
+  <a href="https://creatorlink.net/너링크" class="btn apply">빠른 신청하기</a>
 </div>
 
 <script>
 const names=["김**","이**","박**","최**","정**"];
 const amounts=["100만원","150만원","200만원","300만원"];
 const status=[
-{text:"상담대기",class:"wait"},
+{text:"상담중",class:"wait"},
 {text:"신청완료",class:"done"},
 {text:"승인완료",class:"ok"}
 ];
