@@ -67,9 +67,40 @@ body{
 .live-item{
   display:flex;
   justify-content:space-between;
-  padding:10px 0;
+  align-items:center;
+  padding:12px 0;
   border-bottom:1px solid #eee;
   font-size:13px;
+}
+
+.live-left{
+  display:flex;
+  gap:8px;
+}
+
+.live-name{
+  font-weight:bold;
+}
+
+.live-amount{
+  color:#333;
+}
+
+.badge{
+  padding:4px 8px;
+  border-radius:8px;
+  font-size:11px;
+  font-weight:bold;
+  margin-right:6px;
+}
+
+.wait{background:#e3f2fd;color:#1976d2;}
+.done{background:#e8f5e9;color:#2e7d32;}
+.ok{background:#fff3e0;color:#ef6c00;}
+
+.time{
+  font-size:11px;
+  color:#999;
 }
 </style>
 </head>
@@ -110,15 +141,36 @@ body{
 
 <script>
 const names=["김**","이**","박**","최**","정**"];
-const amounts=["100만원","150만원","200만원","300만원"];
+const amounts=["500만원","800만원","1000만원","1500만원"];
+
+const status=[
+{text:"상담중",class:"wait"},
+{text:"승인완료",class:"done"},
+{text:"신청완료",class:"ok"}
+];
+
+function randomTime(){
+  const times=["방금 전","1분 전","2분 전","3분 전"];
+  return times[Math.floor(Math.random()*times.length)];
+}
 
 function addItem(){
-const name=names[Math.floor(Math.random()*names.length)];
-const amount=amounts[Math.floor(Math.random()*amounts.length)];
+  const name=names[Math.floor(Math.random()*names.length)];
+  const amount=amounts[Math.floor(Math.random()*amounts.length)];
+  const stat=status[Math.floor(Math.random()*status.length)];
 
-const div=document.createElement("div");
-div.className="live-item";
-div.innerHTML=`<div>${name}</div><div>${amount}</div>`;
+  const div=document.createElement("div");
+  div.className="live-item";
+  div.innerHTML=`
+    <div class="live-left">
+      <div class="live-name">${name} 고객님</div>
+      <div class="live-amount">${amount}</div>
+    </div>
+    <div>
+      <span class="badge ${stat.class}">${stat.text}</span>
+      <span class="time">${randomTime()}</span>
+    </div>
+  `;
 
 const list=document.getElementById("list");
 list.prepend(div);
