@@ -9,19 +9,79 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:sans-serif;background:#f5f5f5;}
 
-.wrap{max-width:480px;margin:auto;position:relative;}
+.wrap{max-width:480px;margin:auto;}
 
-/* 버튼 영역 */
+/* 상단 이미지 */
+.main-img{
+  width:100%;
+  display:block;
+}
+
+/* 입력폼 */
+.form-box{
+  background:#fff;
+  margin:10px;
+  padding:15px;
+  border-radius:12px;
+}
+
+.form-box h3{
+  margin-bottom:10px;
+}
+
+.input{
+  width:100%;
+  padding:12px;
+  margin-bottom:10px;
+  border:1px solid #ddd;
+  border-radius:8px;
+}
+
+.submit-btn{
+  width:100%;
+  padding:14px;
+  background:#2d8cff;
+  color:#fff;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+/* 실시간 */
+.live{
+  background:#fff;
+  margin:10px;
+  padding:15px;
+  border-radius:12px;
+}
+
+.live-item{
+  display:flex;
+  justify-content:space-between;
+  padding:8px;
+  border-bottom:1px solid #eee;
+  font-size:13px;
+}
+
+.badge{
+  padding:3px 6px;
+  border-radius:6px;
+  color:#fff;
+  font-size:11px;
+}
+
+.wait{background:#f0ad4e;}
+.done{background:#5bc0de;}
+.ok{background:#5cb85c;}
+
+/* 하단 버튼 */
 .cta-box{
   position:fixed;
   bottom:0;
-  left:0;
   width:100%;
   max-width:480px;
   background:#fff;
   padding:10px;
-  box-shadow:0 -2px 10px rgba(0,0,0,0.1);
-  z-index:1;
 }
 
 .btn{
@@ -35,33 +95,6 @@ body{font-family:sans-serif;background:#f5f5f5;}
 }
 
 .kakao{background:#ffcc00;color:#000;}
-.apply{background:#2d8cff;color:#fff;}
-
-/* 실시간 */
-.live{
-  background:#fff;
-  margin:10px;
-  padding:15px;
-  border-radius:12px;
-}
-.live-title{font-weight:bold;margin-bottom:10px;}
-
-.live-item{
-  display:flex;
-  justify-content:space-between;
-  padding:8px;
-  border-bottom:1px solid #eee;
-  font-size:13px;
-}
-.badge{
-  padding:3px 6px;
-  border-radius:6px;
-  color:#fff;
-  font-size:11px;
-}
-.wait{background:#f0ad4e;}
-.done{background:#5bc0de;}
-.ok{background:#5cb85c;}
 </style>
 </head>
 
@@ -69,28 +102,31 @@ body{font-family:sans-serif;background:#f5f5f5;}
 
 <div class="wrap">
 
-<!-- 🔥 이미지 + 클릭 영역 -->
-<div style="position:relative; z-index:10;">
+<!-- 🔥 상단 이미지 -->
+<img src="https://choemiseon696-lan.github.io/loan-site/main.png" class="main-img">
 
-  <img src="https://choemiseon696-lan.github.io/loan-site/main.png" style="width:100%; display:block; pointer-events:none;">
+<!-- 🔥 입력폼 -->
+<div class="form-box">
+  <h3>빠른 상담 신청</h3>
 
-  <!-- 카톡 상담 1 -->
-  <a href="https://naver.com" target="_blank"
-  style="position:absolute; top:42%; left:15%; width:70%; height:6%; z-index:20; display:block;"></a>
+  <input class="input" placeholder="이름">
+  <input class="input" placeholder="생년월일 (예: 900101)">
+  <input class="input" placeholder="전화번호">
 
-  <!-- 카톡 상담 2 -->
-  <a href="https://naver.com" target="_blank"
-  style="position:absolute; top:50%; left:15%; width:70%; height:6%; z-index:20; display:block;"></a>
+  <select class="input">
+    <option>필요금액 선택</option>
+    <option>500만원 이하</option>
+    <option>500 ~ 1000만원</option>
+    <option>1000 ~ 3000만원</option>
+    <option>3000만원 이상</option>
+  </select>
 
-  <!-- 카톡 상담 3 -->
-  <a href="https://naver.com" target="_blank"
-  style="position:absolute; top:58%; left:15%; width:70%; height:6%; z-index:20; display:block;"></a>
-
+  <button class="submit-btn">상담 신청하기</button>
 </div>
 
 <!-- 🔥 실시간 -->
 <div class="live">
-  <div class="live-title">최근 신청 현황</div>
+  <div style="font-weight:bold; margin-bottom:10px;">최근 신청 현황</div>
   <div id="list"></div>
 </div>
 
@@ -98,13 +134,12 @@ body{font-family:sans-serif;background:#f5f5f5;}
 
 <!-- 🔥 하단 버튼 -->
 <div class="cta-box">
-  <a href="https://naver.com" target="_blank" class="btn kakao">카카오톡 상담하기</a>
-  <a href="https://naver.com" target="_blank" class="btn apply">빠른 신청하기</a>
+  <a href="https://open.kakao.com/o/너링크" class="btn kakao">카카오톡 상담하기</a>
 </div>
 
 <script>
 const names=["김**","이**","박**","최**","정**"];
-const amounts=["100만원","150만원","200만원","300만원"];
+const amounts=["500만원","1000만원","1200만원","100만원"];
 const status=[
 {text:"상담중",class:"wait"},
 {text:"신청완료",class:"done"},
