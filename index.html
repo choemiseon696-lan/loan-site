@@ -9,46 +9,29 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Apple SD Gothic Neo',sans-serif;
-  background:linear-gradient(180deg,#0f4bbd,#1f6dff);
+  background:#f3f6fb;
 }
 
-/* 전체 */
 .wrap{
   max-width:480px;
   margin:auto;
 }
 
-/* 🔥 상단 */
-.hero{
-  color:#fff;
-  text-align:center;
-  padding:40px 20px;
+/* ✅ 상단 이미지 */
+.top-banner{
+  width:100%;
+  display:block;
 }
 
-.hero h1{
-  font-size:22px;
-  margin-bottom:10px;
-}
-
-.hero h2{
-  font-size:26px;
-  font-weight:bold;
-  line-height:1.4;
-}
-
-.hero span{
-  color:#a8d4ff;
-}
-
-/* 🔥 핵심 포인트 */
+/* 핵심 포인트 */
 .features{
   display:flex;
   justify-content:space-between;
   background:#fff;
-  margin:0 15px;
+  margin-top:-20px;
   border-radius:15px;
   padding:15px;
-  margin-top:20px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
 .feature{
@@ -58,58 +41,43 @@ body{
 
 .feature strong{
   display:block;
+  font-size:14px;
   margin-bottom:5px;
 }
 
-/* 🔥 폼 */
+/* 신청폼 */
 .form-box{
   background:#fff;
   margin:15px;
   padding:20px;
   border-radius:15px;
-}
-
-.form-box h3{
-  margin-bottom:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
 .input{
   width:100%;
-  padding:14px;
+  padding:13px;
   margin-bottom:10px;
-  border-radius:10px;
   border:1px solid #ddd;
-}
-
-.select{
-  width:100%;
-  padding:14px;
-  margin-bottom:10px;
   border-radius:10px;
 }
 
-.submit{
+.submit-btn{
   width:100%;
   padding:15px;
-  background:#2d8cff;
+  background:linear-gradient(135deg,#2d8cff,#1b5ed7);
   color:#fff;
   border:none;
   border-radius:10px;
   font-weight:bold;
-  font-size:16px;
 }
 
-/* 🔥 실시간 */
+/* 실시간 */
 .live{
   background:#fff;
   margin:15px;
+  padding:20px;
   border-radius:15px;
-  padding:15px;
-}
-
-.live-title{
-  font-weight:bold;
-  margin-bottom:10px;
 }
 
 .live-item{
@@ -119,35 +87,6 @@ body{
   border-bottom:1px solid #eee;
   font-size:13px;
 }
-
-.badge{
-  padding:4px 8px;
-  border-radius:8px;
-  font-size:11px;
-}
-
-.wait{background:#e3f2fd;color:#1976d2;}
-.done{background:#e8f5e9;color:#2e7d32;}
-.ok{background:#fff3e0;color:#ef6c00;}
-
-/* 🔥 카카오 */
-.kakao{
-  background:#ffeb00;
-  margin:15px;
-  padding:18px;
-  text-align:center;
-  font-weight:bold;
-  border-radius:12px;
-}
-
-/* 🔥 하단 */
-.footer{
-  background:#000;
-  color:#aaa;
-  text-align:center;
-  padding:15px;
-  font-size:12px;
-}
 </style>
 </head>
 
@@ -155,78 +94,62 @@ body{
 
 <div class="wrap">
 
-<!-- 🔥 상단 -->
-<div class="hero">
-  <h1>아몬대출중계사</h1>
-  <h2>간편하게 신청하고<br><span>빠르게 승인받으세요!</span></h2>
-</div>
+<!-- 🔥🔥🔥 여기 핵심 (이미지 맨 위) -->
+<img src="https://choemiseon696-lan.github.io/loan-site/top-banner.png" class="top-banner">
 
-<!-- 🔥 핵심 -->
+<!-- 핵심 포인트 -->
 <div class="features">
-  <div class="feature"><strong>무서류</strong>간편신청</div>
-  <div class="feature"><strong>당일승인</strong>빠른진행</div>
-  <div class="feature"><strong>신용무관</strong>가능</div>
+  <div class="feature">
+    <strong>무서류</strong>
+    간편 신청
+  </div>
+  <div class="feature">
+    <strong>당일 승인</strong>
+    빠른 진행
+  </div>
+  <div class="feature">
+    <strong>신용무관</strong>
+    가능
+  </div>
 </div>
 
-<!-- 🔥 폼 -->
+<!-- 신청폼 -->
 <div class="form-box">
-  <h3>빠른 상담 신청</h3>
+  <h3>간편 상담 신청</h3>
 
   <input class="input" placeholder="이름">
-  <input class="input" placeholder="생년월일 6자리 (예:900101)">
+  <input class="input" placeholder="생년월일 (예: 900101)">
   <input class="input" placeholder="전화번호">
 
-  <select class="select">
+  <select class="input">
     <option>필요금액 선택</option>
     <option>500만원 이하</option>
-    <option>500~1000만원</option>
-    <option>1000~3000만원</option>
+    <option>500 ~ 1000만원</option>
+    <option>1000 ~ 3000만원</option>
     <option>3000만원 이상</option>
   </select>
 
-  <button class="submit">상담 신청하기</button>
+  <button class="submit-btn">상담 신청하기</button>
 </div>
 
-<!-- 🔥 실시간 -->
+<!-- 실시간 -->
 <div class="live">
-  <div class="live-title">실시간 신청 현황</div>
   <div id="list"></div>
-</div>
-
-<!-- 🔥 카카오 -->
-<div class="kakao">
-  카카오톡 상담하기
-</div>
-
-<!-- 🔥 하단 -->
-<div class="footer">
-  ※ 본 서비스는 대출 중개 서비스입니다.<br>
-  ※ 과도한 대출은 신용에 영향을 줄 수 있습니다.
 </div>
 
 </div>
 
 <script>
 const names=["김**","이**","박**","최**","정**"];
-const amounts=["300만원","500만원","800만원","1000만원"];
-const status=[
-{text:"상담중",class:"wait"},
-{text:"승인완료",class:"done"},
-{text:"신청완료",class:"ok"}
-];
+const amounts=["100만원","150만원","200만원","300만원"];
 
 function addItem(){
 const name=names[Math.floor(Math.random()*names.length)];
 const amount=amounts[Math.floor(Math.random()*amounts.length)];
-const stat=status[Math.floor(Math.random()*status.length)];
 
 const div=document.createElement("div");
 div.className="live-item";
-div.innerHTML=`
-<div>${name}</div>
-<div>${amount}</div>
-<div class="badge ${stat.class}">${stat.text}</div>
-`;
+div.innerHTML=`<div>${name}</div><div>${amount}</div>`;
 
 const list=document.getElementById("list");
 list.prepend(div);
@@ -237,7 +160,7 @@ list.removeChild(list.lastChild);
 }
 
 for(let i=0;i<3;i++) addItem();
-setInterval(addItem,2000);
+setInterval(addItem,3000);
 </script>
 
 </body>
