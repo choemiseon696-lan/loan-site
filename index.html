@@ -17,44 +17,24 @@ body{
   margin:auto;
 }
 
-/* 상단 배너 */
-.hero{
-  background:linear-gradient(135deg,#2d8cff,#1b5ed7);
-  color:#fff;
-  padding:40px 20px;
-  text-align:center;
+/* 🔥 이미지 배너 */
+.banner img{
+  width:100%;
+  display:block;
 }
 
-.hero h1{
-  font-size:22px;
-  margin-bottom:10px;
-}
-
-.hero p{
-  font-size:14px;
-}
-
-/* 포인트 */
-.features{
-  display:flex;
-  justify-content:space-between;
-  background:#fff;
-  margin-top:-20px;
-  border-radius:15px;
-  padding:15px;
-}
-
-.feature{
-  text-align:center;
-  font-size:12px;
-}
-
-/* 폼 */
+/* 🔥 신청폼 */
 .form-box{
   background:#fff;
   margin:15px;
   padding:20px;
   border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.form-box h3{
+  margin-bottom:15px;
+  font-size:18px;
 }
 
 .input{
@@ -68,13 +48,14 @@ body{
 .submit-btn{
   width:100%;
   padding:15px;
-  background:#2d8cff;
+  background:linear-gradient(135deg,#2d8cff,#1b5ed7);
   color:#fff;
   border:none;
   border-radius:10px;
+  font-weight:bold;
 }
 
-/* 실시간 */
+/* 🔥 실시간 */
 .live{
   background:#fff;
   margin:15px;
@@ -95,23 +76,31 @@ body{
 
 <div class="wrap">
 
-<div class="hero">
-  <h1>아몬대출중계사</h1>
-  <p>무서류 · 당일승인 · 신용무관</p>
+<!-- 🔥 상단 이미지 -->
+<div class="banner">
+  <img src="https://choemiseon696-lan.github.io/loan-site/main.png">
 </div>
 
-<div class="features">
-  <div class="feature">무서류</div>
-  <div class="feature">당일승인</div>
-  <div class="feature">신용무관</div>
-</div>
-
+<!-- 🔥 신청폼 -->
 <div class="form-box">
+  <h3>빠른 상담 신청</h3>
+
   <input class="input" placeholder="이름">
+  <input class="input" placeholder="생년월일 (예: 900101)">
   <input class="input" placeholder="전화번호">
+
+  <select class="input">
+    <option>필요금액 선택</option>
+    <option>500만원 이하</option>
+    <option>500 ~ 1000만원</option>
+    <option>1000 ~ 3000만원</option>
+    <option>3000만원 이상</option>
+  </select>
+
   <button class="submit-btn">상담 신청하기</button>
 </div>
 
+<!-- 🔥 실시간 -->
 <div class="live">
   <div id="list"></div>
 </div>
