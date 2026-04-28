@@ -145,19 +145,31 @@ body{
 </div>
 
 <script>
-const names=["김**","이**","박**","최**","정**"];
-const amounts=["500만원","800만원","1000만원","1500만원"];
+const names=[
+"김**","이**","박**","최**","정**",
+"강**","조**","윤**","장**","임**",
+"한**","오**","서**","신**","권**",
+"황**","안**","송**","류**","전**",
+"홍**","고**","문**","양**","손**",
+"배**","백**","허**","유**","남**",
+"심**","노**","하**","곽**","성**",
+"차**","주**","우**","구**","민**",
+"진**","엄**","채**","원**","천**",
+"방**","공**","현**","함**","변**"
+];
+
+const amounts=[
+"100만원","200만원","300만원","400만원","500만원",
+"600만원","700만원","800만원","900만원","1000만원",
+"1200만원","1500만원","1800만원","2000만원","2500만원",
+"3000만원","4000만원","5000만원"
+];
 
 const status=[
 {text:"상담중",class:"wait"},
-{text:"승인완료",class:"done"},
-{text:"신청완료",class:"ok"}
+{text:"신청완료",class:"ok"},
+{text:"상담완료",class:"done"}
 ];
-
-function randomTime(){
-  const times=["방금 전","1분 전","2분 전","3분 전"];
-  return times[Math.floor(Math.random()*times.length)];
-}
 
 function addItem(){
   const name=names[Math.floor(Math.random()*names.length)];
@@ -173,7 +185,6 @@ function addItem(){
     </div>
     <div>
       <span class="badge ${stat.class}">${stat.text}</span>
-      <span class="time">${randomTime()}</span>
     </div>
   `;
 
@@ -188,6 +199,5 @@ function addItem(){
 for(let i=0;i<3;i++) addItem();
 setInterval(addItem,3000);
 </script>
-
 </body>
 </html>
