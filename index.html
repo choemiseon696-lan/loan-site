@@ -23,28 +23,6 @@ body{
   display:block;
 }
 
-/* 핵심 포인트 */
-.features{
-  display:flex;
-  justify-content:space-between;
-  background:#fff;
-  margin-top:-20px;
-  border-radius:15px;
-  padding:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.feature{
-  text-align:center;
-  font-size:12px;
-}
-
-.feature strong{
-  display:block;
-  font-size:14px;
-  margin-bottom:5px;
-}
-
 /* 신청폼 */
 .form-box{
   background:#fff;
@@ -72,12 +50,18 @@ body{
   font-weight:bold;
 }
 
-/* 실시간 */
+/* 🔥 실시간 (수정됨) */
 .live{
   background:#fff;
-  margin:15px;
+  margin:20px 15px; /* 👉 위 여백 추가 */
   padding:20px;
   border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.08); /* 👉 카드 느낌 */
+}
+
+.live-title{
+  font-weight:bold;
+  margin-bottom:10px;
 }
 
 .live-item{
@@ -94,7 +78,7 @@ body{
 
 <div class="wrap">
 
-<!-- 🔥🔥🔥 여기 핵심 (이미지 맨 위) -->
+<!-- 🔥 상단 이미지 -->
 <img src="https://choemiseon696-lan.github.io/loan-site/top-banner.png" class="top-banner">
 
 <!-- 신청폼 -->
@@ -116,8 +100,9 @@ body{
   <button class="submit-btn">상담 신청하기</button>
 </div>
 
-<!-- 실시간 -->
+<!-- 🔥 실시간 -->
 <div class="live">
+  <div class="live-title">실시간 신청 현황</div> <!-- 👉 제목 추가 -->
   <div id="list"></div>
 </div>
 
