@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>아몬대출중계사</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -10,41 +11,13 @@ body{
   font-family: 'Apple SD Gothic Neo', sans-serif;
   background:#f3f6fb;
 }
-</style>
-</head>
 
-<body>
-
-<!-- 🔥 여기 넣는거다 -->
-<img src="https://choemiseon696-lan.github.io/loan-site/main.png" style="width:100%;">
-
-</body>
-</html>
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family: 'Apple SD Gothic Neo', sans-serif;
-  background:#f3f6fb;
-}
-</style>
-</head>
-
-<body>
-
-<!-- 🔥 여기 넣는거다 -->
-<img src="https://choemiseon696-lan.github.io/loan-site/main.png" style="width:100%;">
-
-</body>
-</html>
-
-/* 전체 */
 .wrap{
   max-width:480px;
   margin:auto;
 }
 
-/* 🔥 상단 배너 */
+/* 상단 배너 */
 .hero{
   background:linear-gradient(135deg,#2d8cff,#1b5ed7);
   color:#fff;
@@ -59,10 +32,9 @@ body{
 
 .hero p{
   font-size:14px;
-  opacity:0.9;
 }
 
-/* 🔥 핵심 포인트 */
+/* 포인트 */
 .features{
   display:flex;
   justify-content:space-between;
@@ -70,7 +42,6 @@ body{
   margin-top:-20px;
   border-radius:15px;
   padding:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.08);
 }
 
 .feature{
@@ -78,24 +49,12 @@ body{
   font-size:12px;
 }
 
-.feature strong{
-  display:block;
-  font-size:14px;
-  margin-bottom:5px;
-}
-
-/* 🔥 신청폼 */
+/* 폼 */
 .form-box{
   background:#fff;
   margin:15px;
   padding:20px;
   border-radius:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.form-box h3{
-  margin-bottom:15px;
-  font-size:18px;
 }
 
 .input{
@@ -104,52 +63,31 @@ body{
   margin-bottom:10px;
   border:1px solid #ddd;
   border-radius:10px;
-  font-size:14px;
 }
 
 .submit-btn{
   width:100%;
   padding:15px;
-  background:linear-gradient(135deg,#2d8cff,#1b5ed7);
+  background:#2d8cff;
   color:#fff;
   border:none;
   border-radius:10px;
-  font-weight:bold;
-  font-size:15px;
 }
 
-/* 🔥 실시간 */
+/* 실시간 */
 .live{
   background:#fff;
   margin:15px;
   padding:20px;
   border-radius:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.live-title{
-  font-weight:bold;
-  margin-bottom:10px;
 }
 
 .live-item{
   display:flex;
   justify-content:space-between;
-  padding:10px 0;
-  border-bottom:1px solid #eee;
+  padding:8px 0;
   font-size:13px;
 }
-
-.badge{
-  padding:4px 8px;
-  border-radius:8px;
-  color:#fff;
-  font-size:11px;
-}
-
-.wait{background:#f0ad4e;}
-.done{background:#5bc0de;}
-.ok{background:#5cb85c;}
 </style>
 </head>
 
@@ -157,86 +95,38 @@ body{
 
 <div class="wrap">
 
-<!-- 🔥 상단 -->
 <div class="hero">
   <h1>아몬대출중계사</h1>
   <p>무서류 · 당일승인 · 신용무관</p>
 </div>
 
-<!-- 🔥 핵심 포인트 -->
 <div class="features">
-  <div class="feature">
-    <strong>무서류</strong>
-    간편 신청
-  </div>
-  <div class="feature">
-    <strong>당일 승인</strong>
-    빠른 진행
-  </div>
-  <div class="feature">
-    <strong>신용무관</strong>
-    가능
-  </div>
+  <div class="feature">무서류</div>
+  <div class="feature">당일승인</div>
+  <div class="feature">신용무관</div>
 </div>
 
-<!-- 🔥 신청폼 -->
 <div class="form-box">
-  <h3>간편 상담 신청</h3>
-
   <input class="input" placeholder="이름">
-  <input class="input" placeholder="생년월일 (예: 900101)">
   <input class="input" placeholder="전화번호">
-
-  <select class="input">
-    <option>필요금액 선택</option>
-    <option>500만원 이하</option>
-    <option>500 ~ 1000만원</option>
-    <option>1000 ~ 3000만원</option>
-    <option>3000만원 이상</option>
-  </select>
-
   <button class="submit-btn">상담 신청하기</button>
 </div>
 
-<!-- 🔥 실시간 -->
 <div class="live">
-  <div class="live-title">최근 신청 현황</div>
   <div id="list"></div>
 </div>
 
 </div>
 
 <script>
-const names=["김**","이**","박**","최**","정**"];
-const amounts=["100만원","150만원","200만원","300만원"];
-const status=[
-{text:"상담중",class:"wait"},
-{text:"신청완료",class:"done"},
-{text:"승인완료",class:"ok"}
-];
-
+const names=["김**","이**","박**","최**"];
 function addItem(){
-const name=names[Math.floor(Math.random()*names.length)];
-const amount=amounts[Math.floor(Math.random()*amounts.length)];
-const stat=status[Math.floor(Math.random()*status.length)];
-
-const div=document.createElement("div");
-div.className="live-item";
-div.innerHTML=`
-<div>${name} / ${amount}</div>
-<div class="badge ${stat.class}">${stat.text}</div>
-`;
-
-const list=document.getElementById("list");
-list.prepend(div);
-
-if(list.children.length>6){
-list.removeChild(list.lastChild);
+  const div=document.createElement("div");
+  div.className="live-item";
+  div.innerText=names[Math.floor(Math.random()*names.length)]+" 신청완료";
+  document.getElementById("list").prepend(div);
 }
-}
-
-for(let i=0;i<3;i++) addItem();
-setInterval(addItem,3000);
+setInterval(addItem,2000);
 </script>
 
 </body>
