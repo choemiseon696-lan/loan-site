@@ -21,15 +21,16 @@ body{
 .top-banner{
   width:100%;
   display:block;
+  margin-bottom:-40px; /* 🔥 자연스럽게 이어지게 */
 }
 
 /* 신청폼 */
 .form-box{
   background:#fff;
-  margin:-25px 15px 15px;
+  margin:0 15px 15px; /* 🔥 자연스럽게 */
   padding:20px;
-  border-radius:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.08);
+  border-radius:20px; /* 🔥 더 부드럽게 */
+  box-shadow:0 10px 25px rgba(0,0,0,0.08); /* 🔥 고급 느낌 */
 }
 
 .input{
@@ -68,12 +69,11 @@ body{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:14px 0; /* 👉 간격 증가 */
+  padding:14px 0;
   border-bottom:1px solid #eee;
   font-size:13px;
 }
 
-/* 👉 마지막 줄 밑줄 제거 */
 .live-item:last-child{
   border-bottom:none;
 }
