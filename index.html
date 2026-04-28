@@ -3,49 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>대출 상담</title>
+<title>간편 대출 상담</title>
 
 <style>
-body { font-family: sans-serif; background:#f5f5f5; padding:20px; }
-
-.box {
-  background:#fff;
-  padding:15px;
-  border-radius:12px;
-}
-
-.title {
-  font-weight:bold;
-  margin-bottom:10px;
-}
-
-.item {
-  background:#fafafa;
-  padding:10px;
-  border-radius:8px;
-  margin-bottom:8px;
-  display:flex;
-  justify-content:space-between;
-}
-
+body {margin:0; font-family:sans-serif; background:#f5f5f5;}
+.section {padding:20px; max-width:600px; margin:auto;}
+.hero {background:#222; color:#fff; text-align:center; padding:40px 20px;}
+.box {background:#fff; padding:15px; border-radius:12px; margin-bottom:15px;}
 .btn {
-  padding:5px 10px;
-  border-radius:6px;
-  color:#fff;
-  font-size:12px;
+  display:block; text-align:center; padding:15px;
+  border-radius:10px; font-weight:bold; margin-top:10px;
+  text-decoration:none;
 }
+.kakao {background:#ffcc00; color:#000;}
+.apply {background:#2d8cff; color:#fff;}
 
-.wait { background:#f0ad4e; }
-.done { background:#5bc0de; }
-.ok { background:#5cb85c; }
+.live-item {
+  display:flex; justify-content:space-between;
+  padding:10px; background:#fafafa; border-radius:8px; margin-bottom:8px;
+}
+.badge {padding:5px 10px; border-radius:6px; color:#fff; font-size:12px;}
+.wait {background:#f0ad4e;}
+.done {background:#5bc0de;}
+.ok {background:#5cb85c;}
 </style>
 </head>
 
 <body>
 
-<div class="box">
-  <div class="title">최근 신청 현황</div>
+<!-- 🔥 상단 -->
+<div class="hero">
+  <h2>무직자 / 저신용자 상담 가능</h2>
+  <p>조건에 따라 빠른 안내 도와드립니다</p>
+
+  <a href="https://open.kakao.com/o/너링크" class="btn kakao">무료 상담하기</a>
+</div>
+
+<!-- 🔥 혜택 -->
+<div class="section">
+  <div class="box">✔ 선입금 없음 / 간편 진행</div>
+  <div class="box">✔ 상담 후 조건 안내</div>
+  <div class="box">✔ 빠른 처리 지원</div>
+</div>
+
+<!-- 🔥 실시간 신청현황 -->
+<div class="section box">
+  <b>최근 신청 현황</b>
   <div id="list"></div>
+</div>
+
+<!-- 🔥 중간 버튼 -->
+<div class="section">
+  <a href="https://open.kakao.com/o/너링크" class="btn kakao">지금 상담하기</a>
+  <a href="https://creatorlink.net/너링크" class="btn apply">빠른 신청</a>
+</div>
+
+<!-- 🔥 후기 느낌 -->
+<div class="section">
+  <div class="box">“빠르게 상담받고 해결됐어요”</div>
+  <div class="box">“친절하게 안내받았습니다”</div>
+</div>
+
+<!-- 🔥 하단 CTA -->
+<div class="section">
+  <a href="https://open.kakao.com/o/너링크" class="btn kakao">무료 상담 받기</a>
 </div>
 
 <script>
@@ -63,10 +84,10 @@ function addItem() {
   const stat = status[Math.floor(Math.random()*status.length)];
 
   const div = document.createElement("div");
-  div.className = "item";
+  div.className = "live-item";
   div.innerHTML = `
     <div>${name} / ${amount}</div>
-    <div class="btn ${stat.class}">${stat.text}</div>
+    <div class="badge ${stat.class}">${stat.text}</div>
   `;
 
   const list = document.getElementById("list");
@@ -80,10 +101,6 @@ function addItem() {
 for(let i=0;i<3;i++) addItem();
 setInterval(addItem, 3000);
 </script>
-<a href="https://open.kakao.com/o/너링크" 
-style="display:block; text-align:center; background:#ffcc00; padding:15px; border-radius:10px; margin-top:20px; font-weight:bold;">
-무료 상담 받기
-</a>
-  
+
 </body>
 </html>
