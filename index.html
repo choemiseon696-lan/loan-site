@@ -1,1 +1,85 @@
-<!-- reset deploy -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>대출 상담</title>
+
+<style>
+body { font-family: sans-serif; background:#f5f5f5; padding:20px; }
+
+.box {
+  background:#fff;
+  padding:15px;
+  border-radius:12px;
+}
+
+.title {
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.item {
+  background:#fafafa;
+  padding:10px;
+  border-radius:8px;
+  margin-bottom:8px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.btn {
+  padding:5px 10px;
+  border-radius:6px;
+  color:#fff;
+  font-size:12px;
+}
+
+.wait { background:#f0ad4e; }
+.done { background:#5bc0de; }
+.ok { background:#5cb85c; }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <div class="title">최근 신청 현황</div>
+  <div id="list"></div>
+</div>
+
+<script>
+const names = ["김**","이**","박**","최**","정**"];
+const amounts = ["100만원","150만원","200만원","300만원"];
+const status = [
+  {text:"상담대기", class:"wait"},
+  {text:"신청완료", class:"done"},
+  {text:"승인완료", class:"ok"}
+];
+
+function addItem() {
+  const name = names[Math.floor(Math.random()*names.length)];
+  const amount = amounts[Math.floor(Math.random()*amounts.length)];
+  const stat = status[Math.floor(Math.random()*status.length)];
+
+  const div = document.createElement("div");
+  div.className = "item";
+  div.innerHTML = `
+    <div>${name} / ${amount}</div>
+    <div class="btn ${stat.class}">${stat.text}</div>
+  `;
+
+  const list = document.getElementById("list");
+  list.prepend(div);
+
+  if(list.children.length > 6){
+    list.removeChild(list.lastChild);
+  }
+}
+
+for(let i=0;i<3;i++) addItem();
+setInterval(addItem, 3000);
+</script>
+
+</body>
+</html>
