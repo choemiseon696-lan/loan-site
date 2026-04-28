@@ -17,44 +17,55 @@ body{
   margin:auto;
 }
 
-/* ✅ 상단 이미지 */
+/* 상단 메인 배너 */
 .top-banner{
   width:100%;
   display:block;
   border-bottom-left-radius:30px;
   border-bottom-right-radius:30px;
 }
-  
+
+/* 🔥 추가 이미지 (중간 설명 이미지) */
+.mid-banner{
+  width:100%;
+  display:block;
+  margin-top:15px;
+  border-radius:20px;
+}
+
 /* 신청폼 */
 .form-box{
   background:#fff;
-  margin:-55px 15px 20px;
-  padding:20px;
+  margin:15px 15px 20px; /* 👉 이제 자연스럽게 아래로 */
+  padding:25px 20px 20px;
   border-radius:20px;
   box-shadow:0 10px 25px rgba(0,0,0,0.15);
-  position:relative;
-  z-index:10;
+}
+
+.form-box h3{
+  margin-bottom:15px;
+  font-size:18px;
 }
 
 .input{
   width:100%;
-  padding:13px;
-  margin-bottom:10px;
+  padding:14px;
+  margin-bottom:12px;
   border:1px solid #ddd;
   border-radius:10px;
 }
 
 .submit-btn{
   width:100%;
-  padding:15px;
+  padding:16px;
   background:linear-gradient(135deg,#2d8cff,#1b5ed7);
   color:#fff;
   border:none;
-  border-radius:10px;
+  border-radius:12px;
   font-weight:bold;
 }
 
-/* 🔥 실시간 */
+/* 실시간 */
 .live{
   background:#fff;
   margin:20px 15px;
@@ -99,17 +110,11 @@ body{
   border-radius:8px;
   font-size:11px;
   font-weight:bold;
-  margin-right:6px;
 }
 
 .wait{background:#e3f2fd;color:#1976d2;}
 .done{background:#e8f5e9;color:#2e7d32;}
 .ok{background:#fff3e0;color:#ef6c00;}
-
-.time{
-  font-size:11px;
-  color:#999;
-}
 </style>
 </head>
 
@@ -120,7 +125,10 @@ body{
 <!-- 🔥 상단 이미지 -->
 <img src="https://choemiseon696-lan.github.io/loan-site/top-banner.png" class="top-banner">
 
-<!-- 신청폼 -->
+<!-- 🔥 여기 추가 (너가 만든 이미지 넣는 자리) -->
+<img src="https://choemiseon696-lan.github.io/loan-site/mid-banner.png" class="mid-banner">
+
+<!-- 🔥 간편 상담 신청 (이제 아래로 내려감) -->
 <div class="form-box">
   <h3>간편 상담 신청</h3>
 
@@ -139,7 +147,7 @@ body{
   <button class="submit-btn">상담 신청하기</button>
 </div>
 
-<!-- 🔥 실시간 -->
+<!-- 실시간 -->
 <div class="live">
   <div class="live-title">실시간 신청 현황</div>
   <div id="list"></div>
@@ -149,23 +157,16 @@ body{
 
 <script>
 const names=[
-"김**","이**","박**","최**","정**",
-"강**","조**","윤**","장**","임**",
-"한**","오**","서**","신**","권**",
-"황**","안**","송**","류**","전**",
-"홍**","고**","문**","양**","손**",
-"배**","백**","허**","유**","남**",
-"심**","노**","하**","곽**","성**",
-"차**","주**","우**","구**","민**",
-"진**","엄**","채**","원**","천**",
-"방**","공**","현**","함**","변**"
+"김**","이**","박**","최**","정**","강**","조**","윤**","장**","임**",
+"한**","오**","서**","신**","권**","황**","안**","송**","류**","전**",
+"홍**","고**","문**","양**","손**","배**","백**","허**","유**","남**",
+"심**","노**","하**","곽**","성**","차**","주**","우**","구**","민**",
+"진**","엄**","채**","원**","천**","방**","공**","현**","함**","변**"
 ];
 
 const amounts=[
-"100만원","200만원","300만원","400만원","500만원",
-"600만원","700만원","800만원","900만원","1000만원",
-"1200만원","1500만원","1800만원","2000만원","2500만원",
-"3000만원","4000만원","5000만원"
+"100만원","200만원","300만원","500만원","700만원",
+"1000만원","1500만원","2000만원","3000만원","5000만원"
 ];
 
 const status=[
@@ -202,5 +203,6 @@ function addItem(){
 for(let i=0;i<3;i++) addItem();
 setInterval(addItem,3000);
 </script>
+
 </body>
 </html>
