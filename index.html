@@ -237,17 +237,30 @@ body{
 .wait{background:#e3f2fd;color:#1976d2;}
 .done{background:#e8f5e9;color:#2e7d32;}
 .ok{background:#fff3e0;color:#ef6c00;}
+
+/* 🔥 하단 푸터 */
+.footer{
+  background:#333;
+  color:#ccc;
+  text-align:center;
+  padding:30px 15px 80px;
+  font-size:12px;
+  line-height:1.6;
+}
+
+.footer-text{margin-bottom:15px;}
+.footer-warning{color:#ff4d4d;margin-bottom:15px;}
+.footer-copy{color:#aaa;font-size:11px;}
 </style>
 </head>
 
 <body>
 
-<!-- 🔥 상단 고정 -->
+<!-- 상단 고정 -->
 <div class="top-fixed">
   <div class="top-text">
     상담 : 아몬대출중계 | 대표 : 홍길동 | 등록번호 : 2025-경기일반-0001
   </div>
-
   <div class="top-icons">
     <a href="tel:01012345678" class="icon call">📞</a>
     <a href="https://open.kakao.com/o/xxxxxxx" target="_blank" class="icon kakao">💬</a>
@@ -257,7 +270,6 @@ body{
 <div class="wrap">
 
 <img src="https://choemiseon696-lan.github.io/loan-site/top-banner.png" class="top-banner">
-
 <img src="https://choemiseon696-lan.github.io/loan-site/mid-banner.png" class="mid-banner">
 
 <div class="loan-slider">
@@ -285,11 +297,9 @@ body{
 
 <div class="form-box">
   <h3>간편 상담 신청</h3>
-
   <input class="input" placeholder="이름">
   <input class="input" placeholder="생년월일 (예: 900101)">
   <input class="input" placeholder="전화번호">
-
   <select class="input">
     <option>필요금액 선택</option>
     <option>500만원 이하</option>
@@ -297,7 +307,6 @@ body{
     <option>1000 ~ 3000만원</option>
     <option>3000만원 이상</option>
   </select>
-
   <button class="submit-btn">상담 신청하기</button>
 </div>
 
@@ -308,7 +317,27 @@ body{
 
 </div>
 
-<!-- 🔥 하단 카카오 -->
+<!-- 🔥 하단 푸터 -->
+<div class="footer">
+  <div class="footer-text">
+    상호 : 아몬대출중계 | 대표 : 홍길동 | 대부업 등록번호 : 2025-경기일반-0001<br>
+    주소 : 서울시 ○○구 ○○로 123<br>
+    고객센터 : 010-1234-5678 | 등록기관 : ○○시청<br>
+    사업자 등록번호 : 123-45-67890
+  </div>
+
+  <div class="footer-warning">
+    대출금리 : 연 20% 이내 / 연체이자 : 약정금리 +3% (법정 최고금리 20% 이내)<br>
+    취급수수료 등 기타비용 없음 / 중개수수료 요구 금지<br>
+    과도한 빚은 신용등급 하락의 원인이 될 수 있습니다.
+  </div>
+
+  <div class="footer-copy">
+    Copyright © 아몬대출중계 All Rights Reserved.
+  </div>
+</div>
+
+<!-- 카카오 플로팅 -->
 <a href="https://open.kakao.com/o/xxxxxxx" target="_blank" class="kakao-float">💬</a>
 
 <script>
