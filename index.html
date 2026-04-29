@@ -335,13 +335,14 @@ body{
   <option value="유">유</option>
   <option value="무">무</option>
 </select>
-  
-    <option>필요금액 선택</option>
-    <option>500만원 이하</option>
-    <option>500 ~ 1000만원</option>
-    <option>1000 ~ 3000만원</option>
-    <option>3000만원 이상</option>
-  </select>
+
+<select class="input" id="amount">
+  <option>필요금액 선택</option>
+  <option>500만원 이하</option>
+  <option>500 ~ 1000만원</option>
+  <option>1000 ~ 3000만원</option>
+  <option>3000만원 이상</option>
+</select>
 
   <!-- 🔥 버튼 수정됨 -->
   <button class="submit-btn" onclick="sendTelegram()">상담 신청하기</button>
@@ -432,7 +433,7 @@ function sendTelegram(){
   const name = document.querySelectorAll(".input")[0].value;
   const birth = document.querySelectorAll(".input")[1].value;
   const phone = document.querySelectorAll(".input")[2].value;
-  const amount = document.querySelector("select").value;
+  const amount = document.getElementById("amount").value;
 
 if(!name || !phone){
   alert("이름과 전화번호는 필수입니다.");
