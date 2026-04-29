@@ -10,6 +10,7 @@
 body{
   font-family:'Apple SD Gothic Neo',sans-serif;
   background:#f3f6fb;
+  padding-top:45px;
 }
 
 .wrap{
@@ -17,7 +18,71 @@ body{
   margin:auto;
 }
 
-/* 상단 메인 배너 */
+/* 🔥 상단 고정바 */
+.top-fixed{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  max-width:480px;
+  right:0;
+  margin:auto;
+  height:45px;
+  background:#111;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 10px;
+  font-size:11px;
+  z-index:9999;
+}
+
+.top-text{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.top-icons{
+  display:flex;
+  gap:8px;
+}
+
+.icon{
+  width:30px;
+  height:30px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.call{background:#4a90ff;color:#fff;}
+.kakao{background:#ffe812;color:#000;}
+
+/* 🔥 하단 카카오 플로팅 */
+.kakao-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:55px;
+  height:55px;
+  background:#ffe812;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  text-decoration:none;
+  color:#000;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  z-index:9999;
+}
+
+/* 상단 배너 */
 .top-banner{
   width:100%;
   display:block;
@@ -25,7 +90,7 @@ body{
   border-bottom-right-radius:30px;
 }
 
-/* 🔥 중간 이미지 */
+/* 중간 이미지 */
 .mid-banner{
   width:100%;
   display:block;
@@ -33,7 +98,7 @@ body{
   border-radius:20px;
 }
 
-/* 🔥 슬라이드 */
+/* 슬라이드 */
 .loan-slider{
   position:relative;
   width:100%;
@@ -177,33 +242,38 @@ body{
 
 <body>
 
+<!-- 🔥 상단 고정 -->
+<div class="top-fixed">
+  <div class="top-text">
+    상담 : 아몬대출중계 | 대표 : 홍길동 | 등록번호 : 2025-경기일반-0001
+  </div>
+
+  <div class="top-icons">
+    <a href="tel:01012345678" class="icon call">📞</a>
+    <a href="https://open.kakao.com/o/xxxxxxx" target="_blank" class="icon kakao">💬</a>
+  </div>
+</div>
+
 <div class="wrap">
 
-<!-- 상단 -->
 <img src="https://choemiseon696-lan.github.io/loan-site/top-banner.png" class="top-banner">
 
-<!-- 중간 이미지 -->
 <img src="https://choemiseon696-lan.github.io/loan-site/mid-banner.png" class="mid-banner">
 
-<!-- 🔥 슬라이드 추가 -->
 <div class="loan-slider">
   <div class="slides" id="slides">
-
     <div class="slide">
       <div class="sub">무직자 소액대출</div>
       <h2>아몬대출중계에서 빠르고 간편하게</h2>
     </div>
-
     <div class="slide">
       <div class="sub">신용등급 영향 없는 상담</div>
       <h2>부담없이 24시간 상담 가능</h2>
     </div>
-
     <div class="slide">
       <div class="sub">비대면 간편대출</div>
       <h2>당일 승인 · 당일 입금</h2>
     </div>
-
   </div>
 
   <div class="dots">
@@ -213,7 +283,6 @@ body{
   </div>
 </div>
 
-<!-- 신청폼 -->
 <div class="form-box">
   <h3>간편 상담 신청</h3>
 
@@ -232,7 +301,6 @@ body{
   <button class="submit-btn">상담 신청하기</button>
 </div>
 
-<!-- 실시간 -->
 <div class="live">
   <div class="live-title">실시간 신청 현황</div>
   <div id="list"></div>
@@ -240,8 +308,10 @@ body{
 
 </div>
 
+<!-- 🔥 하단 카카오 -->
+<a href="https://open.kakao.com/o/xxxxxxx" target="_blank" class="kakao-float">💬</a>
+
 <script>
-/* 슬라이드 */
 let current=0;
 const slides=document.getElementById("slides");
 const dots=document.querySelectorAll(".dot");
@@ -249,14 +319,12 @@ const dots=document.querySelectorAll(".dot");
 setInterval(()=>{
   current=(current+1)%3;
   slides.style.transform=`translateX(-${current*100}%)`;
-
   dots.forEach(d=>d.classList.remove("active"));
   dots[current].classList.add("active");
 },3000);
 
-/* 실시간 */
-const names=["김**","이**","박**","최**","정**","강**","조**","윤**","장**","임**"];
-const amounts=["100만원","200만원","300만원","500만원","1000만원"];
+const names=["김**","이**","박**","최**","정**"];
+const amounts=["100만원","200만원","300만원","500만원"];
 const status=[
 {text:"상담중",class:"wait"},
 {text:"신청완료",class:"ok"},
@@ -264,28 +332,22 @@ const status=[
 ];
 
 function addItem(){
-  const name=names[Math.floor(Math.random()*names.length)];
-  const amount=amounts[Math.floor(Math.random()*amounts.length)];
-  const stat=status[Math.floor(Math.random()*status.length)];
-
   const div=document.createElement("div");
   div.className="live-item";
   div.innerHTML=`
     <div class="live-left">
-      <div class="live-name">${name} 고객님</div>
-      <div class="live-amount">${amount}</div>
+      <div class="live-name">${names[Math.floor(Math.random()*names.length)]} 고객님</div>
+      <div class="live-amount">${amounts[Math.floor(Math.random()*amounts.length)]}</div>
     </div>
     <div>
-      <span class="badge ${stat.class}">${stat.text}</span>
+      <span class="badge ${status[Math.floor(Math.random()*status.length)].class}">
+        ${status[Math.floor(Math.random()*status.length)].text}
+      </span>
     </div>
   `;
-
   const list=document.getElementById("list");
   list.prepend(div);
-
-  if(list.children.length>5){
-    list.removeChild(list.lastChild);
-  }
+  if(list.children.length>5) list.removeChild(list.lastChild);
 }
 
 for(let i=0;i<3;i++) addItem();
