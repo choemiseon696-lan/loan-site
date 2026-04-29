@@ -247,7 +247,6 @@ body{
   font-size:12px;
   line-height:1.6;
 }
-
 .footer-text{margin-bottom:15px;}
 .footer-warning{color:#ff4d4d;margin-bottom:15px;}
 .footer-copy{color:#aaa;font-size:11px;}
@@ -256,7 +255,6 @@ body{
 
 <body>
 
-<!-- 상단 고정 -->
 <div class="top-fixed">
   <div class="top-text">
     상담 : 아몬대출중계 | 대표 : 홍길동 | 등록번호 : 2025-경기일반-0001
@@ -307,7 +305,9 @@ body{
     <option>1000 ~ 3000만원</option>
     <option>3000만원 이상</option>
   </select>
-  <button class="submit-btn">상담 신청하기</button>
+
+  <!-- 🔥 버튼 수정됨 -->
+  <button class="submit-btn" onclick="sendTelegram()">상담 신청하기</button>
 </div>
 
 <div class="live">
@@ -317,30 +317,19 @@ body{
 
 </div>
 
-<!-- 🔥 하단 푸터 -->
 <div class="footer">
   <div class="footer-text">
-    상호 : 아몬대출중계 | 대표 : 홍길동 | 대부업 등록번호 : 2025-경기일반-0001<br>
-    주소 : 서울시 ○○구 ○○로 123<br>
-    고객센터 : 010-1234-5678 | 등록기관 : ○○시청<br>
-    사업자 등록번호 : 123-45-67890
+    상호 : 아몬대출중계 | 대표 : 홍길동
   </div>
-
-  <div class="footer-warning">
-    대출금리 : 연 20% 이내 / 연체이자 : 약정금리 +3% (법정 최고금리 20% 이내)<br>
-    취급수수료 등 기타비용 없음 / 중개수수료 요구 금지<br>
-    과도한 빚은 신용등급 하락의 원인이 될 수 있습니다.
-  </div>
-
   <div class="footer-copy">
-    Copyright © 아몬대출중계 All Rights Reserved.
+    Copyright © 아몬대출중계
   </div>
 </div>
 
-<!-- 카카오 플로팅 -->
 <a href="https://open.kakao.com/o/xxxxxxx" target="_blank" class="kakao-float">💬</a>
 
 <script>
+// 슬라이드
 let current=0;
 const slides=document.getElementById("slides");
 const dots=document.querySelectorAll(".dot");
@@ -352,35 +341,43 @@ setInterval(()=>{
   dots[current].classList.add("active");
 },3000);
 
-const names=["김**","이**","박**","최**","정**"];
-const amounts=["100만원","200만원","300만원","500만원"];
-const status=[
-{text:"상담중",class:"wait"},
-{text:"신청완료",class:"ok"},
-{text:"상담완료",class:"done"}
-];
+// 🔥 텔레그램 전송
+function sendTelegram(){
 
-function addItem(){
-  const div=document.createElement("div");
-  div.className="live-item";
-  div.innerHTML=`
-    <div class="live-left">
-      <div class="live-name">${names[Math.floor(Math.random()*names.length)]} 고객님</div>
-      <div class="live-amount">${amounts[Math.floor(Math.random()*amounts.length)]}</div>
-    </div>
-    <div>
-      <span class="badge ${status[Math.floor(Math.random()*status.length)].class}">
-        ${status[Math.floor(Math.random()*status.length)].text}
-      </span>
-    </div>
-  `;
-  const list=document.getElementById("list");
-  list.prepend(div);
-  if(list.children.length>5) list.removeChild(list.lastChild);
+  const name = document.querySelectorAll(".input")[0].value;
+  const birth = document.querySelectorAll(".input")[1].value;
+  const phone = document.querySelectorAll(".input")[2].value;
+  const amount = document.querySelector("select").value;
+
+  if(!name || !phone){
+    alert("이름과 전화번호는 필수입니다.");
+    return;
+  }
+
+  const msg = `📌 상담 신청 접수
+이름: ${name}
+생년월일: ${birth}
+전화번호: ${phone}
+금액: ${amount}`;
+
+  const token = "여기에_토큰";
+  const chat_id = "8219424665";
+
+  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({
+      chat_id: chat_id,
+      text: msg
+    })
+  })
+  .then(()=>{
+    alert("신청 완료! 곧 연락드립니다.");
+  })
+  .catch(()=>{
+    alert("전송 실패");
+  });
 }
-
-for(let i=0;i<3;i++) addItem();
-setInterval(addItem,3000);
 </script>
 
 </body>
