@@ -296,11 +296,10 @@ body{
 <img src="https://choemiseon696-lan.github.io/loan-site/new-banner.png" class="mid-banner">
 
 <div class="form-box">
-<div class="form-box">
   <h3>간편 상담 신청</h3>
   <input class="input" placeholder="이름">
   <input class="input" placeholder="생년월일 (예: 900101)">
-  <input class="input" placeholder="전화번호">
+  <input class="input" id="phone" placeholder="전화번호" maxlength="13">
   <select class="input">
     <option>필요금액 선택</option>
     <option>500만원 이하</option>
@@ -436,6 +435,18 @@ if(!/^\d{6}$/.test(birth)){
     alert("전송 실패");
   });
 }
+// 🔥 전화번호 자동 하이픈 + 숫자만 입력
+document.getElementById("phone").addEventListener("input", function(){
+  let value = this.value.replace(/[^0-9]/g, '');
+
+  if(value.length < 4){
+    this.value = value;
+  }else if(value.length < 8){
+    this.value = value.replace(/(\d{3})(\d+)/, "$1-$2");
+  }else{
+    this.value = value.replace(/(\d{3})(\d{4})(\d+)/, "$1-$2-$3");
+  }
+});
 </script>
 
 </body>
