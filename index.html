@@ -330,6 +330,8 @@ body{
 
 <script>
 // 슬라이드
+<script>
+// 슬라이드
 let current=0;
 const slides=document.getElementById("slides");
 const dots=document.querySelectorAll(".dot");
@@ -340,6 +342,93 @@ setInterval(()=>{
   dots.forEach(d=>d.classList.remove("active"));
   dots[current].classList.add("active");
 },3000);
+
+// 🔥 실시간 데이터 (원래 네꺼 복구)
+const names=[
+"김**","이**","박**","최**","정**","강**","조**","윤**","장**","임**",
+"한**","오**","서**","신**","권**","황**","안**","송**","류**","전**",
+"홍**","고**","문**","양**","손**","배**","백**","허**","유**","남**",
+"심**","노**","하**","곽**","성**","차**","주**","우**","구**","민**",
+"진**","엄**","채**","원**","천**","방**","공**","현**","함**","변**"
+];
+
+const amounts=[
+"100만원","200만원","300만원","500만원","700만원",
+"1000만원","1500만원","2000만원","3000만원","5000만원"
+];
+
+const status=[
+{text:"상담중",class:"wait"},
+{text:"신청완료",class:"ok"},
+{text:"상담완료",class:"done"}
+];
+
+function addItem(){
+  const name=names[Math.floor(Math.random()*names.length)];
+  const amount=amounts[Math.floor(Math.random()*amounts.length)];
+  const stat=status[Math.floor(Math.random()*status.length)];
+
+  const div=document.createElement("div");
+  div.className="live-item";
+  div.innerHTML=`
+    <div class="live-left">
+      <div class="live-name">${name} 고객님</div>
+      <div class="live-amount">${amount}</div>
+    </div>
+    <div>
+      <span class="badge ${stat.class}">${stat.text}</span>
+    </div>
+  `;
+
+  const list=document.getElementById("list");
+  list.prepend(div);
+
+  if(list.children.length>5){
+    list.removeChild(list.lastChild);
+  }
+}
+
+for(let i=0;i<3;i++) addItem();
+setInterval(addItem,3000);
+
+// 🔥 텔레그램 전송 (그대로 유지)
+function sendTelegram(){
+
+  const name = document.querySelectorAll(".input")[0].value;
+  const birth = document.querySelectorAll(".input")[1].value;
+  const phone = document.querySelectorAll(".input")[2].value;
+  const amount = document.querySelector("select").value;
+
+  if(!name || !phone){
+    alert("이름과 전화번호는 필수입니다.");
+    return;
+  }
+
+  const msg = `📌 상담 신청 접수
+이름: ${name}
+생년월일: ${birth}
+전화번호: ${phone}
+금액: ${amount}`;
+
+  const token = "여기에_토큰";
+  const chat_id = "여기에_chat_id";
+
+  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({
+      chat_id: chat_id,
+      text: msg
+    })
+  })
+  .then(()=>{
+    alert("신청 완료! 곧 연락드립니다.");
+  })
+  .catch(()=>{
+    alert("전송 실패");
+  });
+}
+</script>
 
 // 🔥 텔레그램 전송
 function sendTelegram(){
