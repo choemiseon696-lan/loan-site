@@ -400,10 +400,16 @@ function sendTelegram(){
   const phone = document.querySelectorAll(".input")[2].value;
   const amount = document.querySelector("select").value;
 
-  if(!name || !phone){
-    alert("이름과 전화번호는 필수입니다.");
-    return;
-  }
+if(!name || !phone){
+  alert("이름과 전화번호는 필수입니다.");
+  return;
+}
+
+// 🔥 생년월일 6자리 체크
+if(!/^\d{6}$/.test(birth)){
+  alert("생년월일은 숫자 6자리로 입력해주세요. (예: 900101)");
+  return;
+}
 
   const msg = `📌 상담 신청 접수
 이름: ${name}
