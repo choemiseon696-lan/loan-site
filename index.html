@@ -429,6 +429,21 @@ if(!/^\d{6}$/.test(birth)){
     })
   })
   .then(()=>{
+
+      // 🔥 여기 넣어야 맞다
+fetch("https://script.google.com/macros/s/AKfycbzsYC-3E5JgNGi0FD371luzrXBMEfCwKNYEjRKe-IOMDdpITs1yGybsTIHqsjk9Y8ZLSA/exec", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  mode: "no-cors",  // 
+  body: JSON.stringify({
+    name: name,
+    birth: birth,
+    phone: phone,
+    amount: amount
+  })
+});
     alert("접수완료. 상담사 배정후 연락드리겠습니다.");
   })
   .catch(()=>{
