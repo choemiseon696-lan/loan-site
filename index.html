@@ -25,7 +25,7 @@ body{
   border-bottom-right-radius:30px;
 }
 
-/* 🔥 추가 이미지 (중간 설명 이미지) */
+/* 🔥 중간 이미지 */
 .mid-banner{
   width:100%;
   display:block;
@@ -33,10 +33,67 @@ body{
   border-radius:20px;
 }
 
+/* 🔥 슬라이드 */
+.loan-slider{
+  position:relative;
+  width:100%;
+  height:180px;
+  overflow:hidden;
+  margin-top:15px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#2d8cff,#6a5af9);
+}
+
+.slides{
+  display:flex;
+  height:100%;
+}
+
+.slide{
+  min-width:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  text-align:center;
+}
+
+.slide .sub{
+  font-size:13px;
+  opacity:0.8;
+  margin-bottom:8px;
+}
+
+.slide h2{
+  font-size:18px;
+  font-weight:bold;
+}
+
+.dots{
+  position:absolute;
+  bottom:10px;
+  width:100%;
+  text-align:center;
+}
+
+.dot{
+  display:inline-block;
+  width:6px;
+  height:6px;
+  margin:0 4px;
+  background:rgba(255,255,255,0.5);
+  border-radius:50%;
+}
+
+.dot.active{
+  background:#fff;
+}
+
 /* 신청폼 */
 .form-box{
   background:#fff;
-  margin:15px 15px 20px; /* 👉 이제 자연스럽게 아래로 */
+  margin:15px 15px 20px;
   padding:25px 20px 20px;
   border-radius:20px;
   box-shadow:0 10px 25px rgba(0,0,0,0.15);
@@ -122,13 +179,41 @@ body{
 
 <div class="wrap">
 
-<!-- 🔥 상단 이미지 -->
+<!-- 상단 -->
 <img src="https://choemiseon696-lan.github.io/loan-site/top-banner.png" class="top-banner">
 
-<!-- 🔥 여기 추가 (너가 만든 이미지 넣는 자리) -->
+<!-- 중간 이미지 -->
 <img src="https://choemiseon696-lan.github.io/loan-site/mid-banner.png" class="mid-banner">
 
-<!-- 🔥 간편 상담 신청 (이제 아래로 내려감) -->
+<!-- 🔥 슬라이드 추가 -->
+<div class="loan-slider">
+  <div class="slides" id="slides">
+
+    <div class="slide">
+      <div class="sub">무직자 소액대출</div>
+      <h2>아몬대출중계에서 빠르고 간편하게</h2>
+    </div>
+
+    <div class="slide">
+      <div class="sub">신용등급 영향 없는 상담</div>
+      <h2>부담없이 24시간 상담 가능</h2>
+    </div>
+
+    <div class="slide">
+      <div class="sub">비대면 간편대출</div>
+      <h2>당일 승인 · 당일 입금</h2>
+    </div>
+
+  </div>
+
+  <div class="dots">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+</div>
+
+<!-- 신청폼 -->
 <div class="form-box">
   <h3>간편 상담 신청</h3>
 
@@ -156,19 +241,22 @@ body{
 </div>
 
 <script>
-const names=[
-"김**","이**","박**","최**","정**","강**","조**","윤**","장**","임**",
-"한**","오**","서**","신**","권**","황**","안**","송**","류**","전**",
-"홍**","고**","문**","양**","손**","배**","백**","허**","유**","남**",
-"심**","노**","하**","곽**","성**","차**","주**","우**","구**","민**",
-"진**","엄**","채**","원**","천**","방**","공**","현**","함**","변**"
-];
+/* 슬라이드 */
+let current=0;
+const slides=document.getElementById("slides");
+const dots=document.querySelectorAll(".dot");
 
-const amounts=[
-"100만원","200만원","300만원","500만원","700만원",
-"1000만원","1500만원","2000만원","3000만원","5000만원"
-];
+setInterval(()=>{
+  current=(current+1)%3;
+  slides.style.transform=`translateX(-${current*100}%)`;
 
+  dots.forEach(d=>d.classList.remove("active"));
+  dots[current].classList.add("active");
+},3000);
+
+/* 실시간 */
+const names=["김**","이**","박**","최**","정**","강**","조**","윤**","장**","임**"];
+const amounts=["100만원","200만원","300만원","500만원","1000만원"];
 const status=[
 {text:"상담중",class:"wait"},
 {text:"신청완료",class:"ok"},
