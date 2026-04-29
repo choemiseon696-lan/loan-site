@@ -430,60 +430,74 @@ setInterval(addItem,3000);
 // 🔥 텔레그램 전송
 function sendTelegram(){
 
+const gender = document.getElementById("gender").value;
 const name = document.getElementById("name").value;
 const birth = document.getElementById("birth").value;
 const phone = document.getElementById("phone").value;
+const time = document.getElementById("time").value;
+const loanDelay = document.getElementById("loanDelay").value;
+const telDelay = document.getElementById("telDelay").value;
+const amount = document.getElementById("amount").value;
 
 if(!name || !phone){
   alert("이름과 전화번호는 필수입니다.");
   return;
 }
 
-// 🔥 생년월일 6자리 체크
+// 생년월일 체크
 if(!/^\d{6}$/.test(birth)){
   alert("생년월일은 숫자 6자리로 입력해주세요. (예: 900101)");
   return;
 }
 
-  const msg = `📌 상담 신청 접수
+const msg = `📌 상담 신청 접수
+성별: ${gender}
 이름: ${name}
 생년월일: ${birth}
 전화번호: ${phone}
+연락가능시간: ${time}
+금융연체: ${loanDelay}
+통신연체: ${telDelay}
 금액: ${amount}`;
 
-  // ⚠️ 여기 다시 넣어야됨 (토큰 새로 발급 추천)
-  const token = "8751871813:AAEf7TRWrujPJSSjhHF63M-jE-Vy033L_8o";
-  const chat_id = "-5089139376";
+// 텔레그램
+const token = "8751871813:AAEf7TRWrujPJSSjhHF63M-jE-Vy033L_8o";
+const chat_id = "-5089139376";
 
-  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({
-      chat_id: chat_id,
-      text: msg
-    })
-  })
-  .then(()=>{
-
-      // 🔥 여기 넣어야 맞다
-fetch("https://script.google.com/macros/s/AKfycbzSSNYUPLaHdx7mb9ze05XuIvCoipo_41s91P7JCjeCbDWZ7BKNCp2KTuwA7bllgTft/exec", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  mode: "no-cors",  // 
+fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
   body: JSON.stringify({
-    name: name,
-    birth: birth,
-    phone: phone,
-    amount: amount
+    chat_id: chat_id,
+    text: msg
   })
-});
-    alert("접수완료. 상담사 배정후 연락드리겠습니다.");
-  })
-  .catch(()=>{
-    alert("전송 실패");
+})
+.then(()=>{
+
+  // 🔥 구글 시트 전송
+  fetch("https://script.google.com/macros/s/AKfycbzSSNYUPLaHdx7mb9ze05XuIvCoipo_41s91P7JCjeCbDWZ7BKNCp2KTuwA7bllgTft/exec", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    mode: "no-cors",
+    body: JSON.stringify({
+      gender: gender,
+      name: name,
+      birth: birth,
+      phone: phone,
+      time: time,
+      loanDelay: loanDelay,
+      telDelay: telDelay,
+      amount: amount
+    })
   });
+
+  alert("접수완료. 상담사 배정후 연락드리겠습니다.");
+})
+.catch(()=>{
+  alert("전송 실패");
+});
 }
 // 🔥 전화번호 자동 하이픈 + 숫자만 입력
 document.getElementById("phone").addEventListener("input", function(){
