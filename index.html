@@ -297,10 +297,45 @@ body{
 
 <div class="form-box">
   <h3>간편 상담 신청</h3>
-  <input class="input" placeholder="이름">
-  <input class="input" placeholder="생년월일 (예: 900101)">
-  <input class="input" id="phone" placeholder="전화번호" maxlength="13">
-  <select class="input">
+<!-- 성별 -->
+<select class="input" id="gender">
+  <option value="">성별 선택</option>
+  <option value="남">남</option>
+  <option value="여">여</option>
+</select>
+
+<input class="input" placeholder="이름">
+<input class="input" placeholder="생년월일 (예: 900101)">
+<input class="input" id="phone" placeholder="전화번호" maxlength="13">
+
+<!-- 연락 가능 시간 -->
+<select class="input" id="time">
+  <option value="">연락 가능 시간</option>
+  <option>09:00 ~ 10:00</option>
+  <option>10:00 ~ 11:00</option>
+  <option>11:00 ~ 12:00</option>
+  <option>12:00 ~ 13:00</option>
+  <option>13:00 ~ 14:00</option>
+  <option>14:00 ~ 15:00</option>
+  <option>15:00 ~ 16:00</option>
+  <option>16:00 ~ 17:00</option>
+  <option>17:00 ~ 18:00</option>
+</select>
+
+<!-- 금융 연체 -->
+<select class="input" id="loanDelay">
+  <option value="">금융권 연체 여부</option>
+  <option value="유">유</option>
+  <option value="무">무</option>
+</select>
+
+<!-- 통신 연체 -->
+<select class="input" id="telDelay">
+  <option value="">통신 연체 여부</option>
+  <option value="유">유</option>
+  <option value="무">무</option>
+</select>
+  
     <option>필요금액 선택</option>
     <option>500만원 이하</option>
     <option>500 ~ 1000만원</option>
