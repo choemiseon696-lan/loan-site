@@ -304,9 +304,9 @@ body{
   <option value="여">여</option>
 </select>
 
-<input class="input" placeholder="이름">
-<input class="input" placeholder="생년월일 (예: 900101)">
-<input class="input" id="phone" placeholder="전화번호" maxlength="13">
+<input class="input" id="name" placeholder="이름">
+<input class="input" id="birth" placeholder="생년월일 (예: 900101)">
+<input class="input" id="phone" placeholder="전화번호">
 
 <!-- 연락 가능 시간 -->
 <select class="input" id="time">
@@ -430,10 +430,9 @@ setInterval(addItem,3000);
 // 🔥 텔레그램 전송
 function sendTelegram(){
 
-  const name = document.querySelectorAll(".input")[0].value;
-  const birth = document.querySelectorAll(".input")[1].value;
-  const phone = document.querySelectorAll(".input")[2].value;
-  const amount = document.getElementById("amount").value;
+const name = document.getElementById("name").value;
+const birth = document.getElementById("birth").value;
+const phone = document.getElementById("phone").value;
 
 if(!name || !phone){
   alert("이름과 전화번호는 필수입니다.");
