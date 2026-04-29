@@ -444,9 +444,14 @@ if(!name || !phone){
   return;
 }
 
-// 생년월일 체크
 if(!/^\d{6}$/.test(birth)){
-  alert("생년월일은 숫자 6자리로 입력해주세요. (예: 900101)");
+  alert("생년월일은 숫자 6자리로 입력해주세요.");
+  return;
+}
+
+// 🔥 여기 추가
+if(!gender || !time || !loanDelay || !telDelay || amount === "필요금액 선택"){
+  alert("모든 항목을 선택해주세요.");
   return;
 }
 
