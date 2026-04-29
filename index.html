@@ -1,333 +1,3 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>아몬대출중계사</title>
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box;}
-body{
-  font-family:'Apple SD Gothic Neo',sans-serif;
-  background:#f3f6fb;
-  padding-top:45px;
-}
-
-.wrap{
-  max-width:480px;
-  margin:auto;
-}
-
-/* 🔥 상단 고정바 */
-.top-fixed{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  max-width:480px;
-  right:0;
-  margin:auto;
-  height:45px;
-  background:#111;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 10px;
-  font-size:11px;
-  z-index:9999;
-}
-
-.top-text{
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-.top-icons{
-  display:flex;
-  gap:8px;
-}
-
-.icon{
-  width:30px;
-  height:30px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  text-decoration:none;
-  font-size:14px;
-}
-
-.call{background:#4a90ff;color:#fff;}
-.kakao{background:#ffe812;color:#000;}
-
-/* 🔥 하단 카카오 플로팅 */
-.kakao-float{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:55px;
-  height:55px;
-  background:#ffe812;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:22px;
-  text-decoration:none;
-  color:#000;
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
-  z-index:9999;
-}
-
-/* 상단 배너 */
-.top-banner{
-  width:100%;
-  display:block;
-  border-bottom-left-radius:30px;
-  border-bottom-right-radius:30px;
-}
-
-/* 중간 이미지 */
-.mid-banner{
-  width:100%;
-  display:block;
-  margin-top:15px;
-  border-radius:20px;
-}
-
-/* 슬라이드 */
-.loan-slider{
-  position:relative;
-  width:100%;
-  height:180px;
-  overflow:hidden;
-  margin-top:15px;
-  border-radius:20px;
-  background:linear-gradient(135deg,#2d8cff,#6a5af9);
-}
-
-.slides{
-  display:flex;
-  height:100%;
-}
-
-.slide{
-  min-width:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  color:#fff;
-  text-align:center;
-}
-
-.slide .sub{
-  font-size:13px;
-  opacity:0.8;
-  margin-bottom:8px;
-}
-
-.slide h2{
-  font-size:18px;
-  font-weight:bold;
-}
-
-.dots{
-  position:absolute;
-  bottom:10px;
-  width:100%;
-  text-align:center;
-}
-
-.dot{
-  display:inline-block;
-  width:6px;
-  height:6px;
-  margin:0 4px;
-  background:rgba(255,255,255,0.5);
-  border-radius:50%;
-}
-
-.dot.active{
-  background:#fff;
-}
-
-/* 신청폼 */
-.form-box{
-  background:#fff;
-  margin:15px 15px 20px;
-  padding:25px 20px 20px;
-  border-radius:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.15);
-}
-
-.form-box h3{
-  margin-bottom:15px;
-  font-size:18px;
-}
-
-.input{
-  width:100%;
-  padding:14px;
-  margin-bottom:12px;
-  border:1px solid #ddd;
-  border-radius:10px;
-}
-
-.submit-btn{
-  width:100%;
-  padding:16px;
-  background:linear-gradient(135deg,#2d8cff,#1b5ed7);
-  color:#fff;
-  border:none;
-  border-radius:12px;
-  font-weight:bold;
-}
-
-/* 실시간 */
-.live{
-  background:#fff;
-  margin:20px 15px;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.08);
-}
-
-.live-title{
-  font-weight:bold;
-  margin-bottom:10px;
-}
-
-.live-item{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 0;
-  border-bottom:1px solid #eee;
-  font-size:13px;
-}
-
-.live-item:last-child{
-  border-bottom:none;
-}
-
-.live-left{
-  display:flex;
-  gap:8px;
-}
-
-.live-name{
-  font-weight:bold;
-}
-
-.live-amount{
-  color:#333;
-}
-
-.badge{
-  padding:4px 8px;
-  border-radius:8px;
-  font-size:11px;
-  font-weight:bold;
-}
-
-.wait{background:#e3f2fd;color:#1976d2;}
-.done{background:#e8f5e9;color:#2e7d32;}
-.ok{background:#fff3e0;color:#ef6c00;}
-
-/* 🔥 하단 푸터 */
-.footer{
-  background:#333;
-  color:#ccc;
-  text-align:center;
-  padding:30px 15px 80px;
-  font-size:12px;
-  line-height:1.6;
-}
-.footer-text{margin-bottom:15px;}
-.footer-warning{color:#ff4d4d;margin-bottom:15px;}
-.footer-copy{color:#aaa;font-size:11px;}
-</style>
-</head>
-
-<body>
-
-<div class="top-fixed">
-  <div class="top-text">
-    상담 : 아몬대출중계 | 대표 : 홍길동 | 등록번호 : 2025-경기일반-0001
-  </div>
-  <div class="top-icons">
-    <a href="tel:01012345678" class="icon call">📞</a>
-    <a href="https://open.kakao.com/o/xxxxxxx" target="_blank" class="icon kakao">💬</a>
-  </div>
-</div>
-
-<div class="wrap">
-
-<img src="https://choemiseon696-lan.github.io/loan-site/top-banner.png" class="top-banner">
-<img src="https://choemiseon696-lan.github.io/loan-site/mid-banner.png" class="mid-banner">
-
-<div class="loan-slider">
-  <div class="slides" id="slides">
-    <div class="slide">
-      <div class="sub">무직자 소액대출</div>
-      <h2>아몬대출중계에서 빠르고 간편하게</h2>
-    </div>
-    <div class="slide">
-      <div class="sub">신용등급 영향 없는 상담</div>
-      <h2>부담없이 24시간 상담 가능</h2>
-    </div>
-    <div class="slide">
-      <div class="sub">비대면 간편대출</div>
-      <h2>당일 승인 · 당일 입금</h2>
-    </div>
-  </div>
-
-  <div class="dots">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-  </div>
-</div>
-
-<div class="form-box">
-  <h3>간편 상담 신청</h3>
-  <input class="input" placeholder="이름">
-  <input class="input" placeholder="생년월일 (예: 900101)">
-  <input class="input" placeholder="전화번호">
-  <select class="input">
-    <option>필요금액 선택</option>
-    <option>500만원 이하</option>
-    <option>500 ~ 1000만원</option>
-    <option>1000 ~ 3000만원</option>
-    <option>3000만원 이상</option>
-  </select>
-
-  <!-- 🔥 버튼 수정됨 -->
-  <button class="submit-btn" onclick="sendTelegram()">상담 신청하기</button>
-</div>
-
-<div class="live">
-  <div class="live-title">실시간 신청 현황</div>
-  <div id="list"></div>
-</div>
-
-</div>
-
-<div class="footer">
-  <div class="footer-text">
-    상호 : 아몬대출중계 | 대표 : 홍길동
-  </div>
-  <div class="footer-copy">
-    Copyright © 아몬대출중계
-  </div>
-</div>
-
-<a href="https://open.kakao.com/o/xxxxxxx" target="_blank" class="kakao-float">💬</a>
-
 <script>
 // 슬라이드
 let current=0;
@@ -341,44 +11,36 @@ setInterval(()=>{
   dots[current].classList.add("active");
 },3000);
 
-// 🔥 텔레그램 전송
+
+// 🔥 텔레그램 전송 (개선버전)
 function sendTelegram(){
 
-  const name = document.querySelectorAll(".input")[0].value;
-  const birth = document.querySelectorAll(".input")[1].value;
-  const phone = document.querySelectorAll(".input")[2].value;
-  const amount = document.querySelector("select").value;
+  const name = document.getElementById("name").value;
+  const birth = document.getElementById("birth").value;
+  const phone = document.getElementById("phone").value;
+  const amount = document.getElementById("amount").value;
 
   if(!name || !phone){
     alert("이름과 전화번호는 필수입니다.");
     return;
   }
 
-  const msg = `📌 상담 신청 접수
-이름: ${name}
-생년월일: ${birth}
-전화번호: ${phone}
-금액: ${amount}`;
+  const msg = `📌 상담 신청 접수\n이름: ${name}\n생년월일: ${birth}\n전화번호: ${phone}\n금액: ${amount}`;
 
   const token = "8751871813:AAEf7TRWrujPJSSjhHF63M-jE-Vy033L_8o";
   const chat_id = "8219424665";
 
-  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body: JSON.stringify({
-      chat_id: chat_id,
-      text: msg
-    })
-  })
+  fetch(`https://api.telegram.org/bot${token}/sendMessage?chat_id=${chat_id}&text=${encodeURIComponent(msg)}`)
   .then(()=>{
     alert("신청 완료! 곧 연락드립니다.");
+
+    // 입력 초기화
+    document.getElementById("name").value="";
+    document.getElementById("birth").value="";
+    document.getElementById("phone").value="";
   })
   .catch(()=>{
     alert("전송 실패");
   });
 }
 </script>
-
-</body>
-</html>
