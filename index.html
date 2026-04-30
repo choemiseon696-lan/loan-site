@@ -546,18 +546,28 @@ const msg = `📌 상담 신청 접수
 희망금액: ${amount}`;
 
 // 텔레그램
-const token = "8751871813:AAEf7TRWrujPJSSjhHF63M-jE-Vy033L_8o";
-const chat_id = "-5089139376";
-
-fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-  method:"POST",
-  headers:{"Content-Type":"application/json"},
+fetch("https://script.google.com/macros/s/AKfycbxvbDFOofEOfEREH0p4PyhlLdwKUEgQTgrkHck20qALilAGoY2XLJ0ycmOfg1I_j-ySnw/exec", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
   body: JSON.stringify({
-    chat_id: chat_id,
-    text: msg
+    gender: gender,
+    name: name,
+    birth: birth,
+    phone: phone,
+    time: time,
+    loanDelay: loanDelay,
+    telDelay: telDelay,
+    amount: amount
   })
 })
 .then(()=>{
+  alert("접수완료. 상담사 배정후 연락드리겠습니다.");
+})
+.catch(()=>{
+  alert("전송 실패");
+});
 
   // 🔥 구글 시트 전송
   fetch("https://script.google.com/macros/s/AKfycbxvbDFOofEOfEREH0p4PyhlLdwKUEgQTgrkHck20qALilAGoY2XLJ0ycmOfg1I_j-ySnw/exec", {
