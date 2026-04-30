@@ -534,12 +534,11 @@ if(!gender || !time || !loanDelay || !telDelay || amount === "필요금액 선�
   return;
 }
 
-fetch("https://script.google.com/macros/s/AKfycbzxQUJGjYEY3ebPQFyBhdWcOxgDDC1i1-Z_h_acJfgRjXYFNcUJytGPP8dqNM2y0XmBgw/exec", {
+fetch("https://script.google.com/macros/s/AKfycbwlfeA6cuG94fx24sWD3ikeivkoHbZfJbyLpCUPxJkAaqqth-8tnFeMVA_8UIIVnvV_FA/exec", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
   },
-  mode: "no-cors",
   body: JSON.stringify({
     gender,
     name,
