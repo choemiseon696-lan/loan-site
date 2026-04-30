@@ -501,6 +501,7 @@ function addItem(){
 for(let i=0;i<3;i++) addItem();
 setInterval(addItem,10000);
 
+// ✅ 여기 정상
 function sendTelegram(){
 
 const gender = document.getElementById("gender").value;
@@ -559,32 +560,9 @@ fetch("https://script.google.com/macros/s/AKfycbxvbDFOofEOfEREH0p4PyhlLdwKUEgQTg
 
 }
 
-  // 🔥 구글 시트 전송
-  fetch("https://script.google.com/macros/s/AKfycbxvbDFOofEOfEREH0p4PyhlLdwKUEgQTgrkHck20qALilAGoY2XLJ0ycmOfg1I_j-ySnw/exec", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    mode: "no-cors",
-    body: JSON.stringify({
-      gender: gender,
-      name: name,
-      birth: birth,
-      phone: phone,
-      time: time,
-      loanDelay: loanDelay,
-      telDelay: telDelay,
-      amount: amount
-    })
-  });
+// ❌ 여기 있던 "구글 시트 전송 fetch" 통째로 삭제됨
 
-  alert("접수완료. 상담사 배정후 연락드리겠습니다.");
-})
-.catch(()=>{
-  alert("전송 실패");
-});
-}
-// 🔥 전화번호 자동 하이픈 + 숫자만 입력
+// 🔥 전화번호 자동 하이픈
 document.getElementById("phone").addEventListener("input", function(){
   let value = this.value.replace(/[^0-9]/g, '');
 
