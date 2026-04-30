@@ -316,78 +316,80 @@ body{
 
 <div class="form-box">
   <h3>간편 상담 신청</h3>
+
   <p style="font-size:12px; color:#666; margin-bottom:10px;">
   본 서비스는 금융상품을 직접 제공하지 않으며,
   고객 정보에 따라 제휴 금융사의 상품을 안내하는 중개 서비스입니다.
-</p>
-<!-- 성별 -->
-<select class="input" id="gender">
-  <option value="">성별 선택</option>
-  <option value="남">남</option>
-  <option value="여">여</option>
-</select>
+  </p>
 
-<input class="input" id="name" placeholder="이름">
-<input class="input" id="birth" placeholder="생년월일 (예: 900101)">
-<input class="input" id="phone" placeholder="전화번호">
+  <!-- 성별 -->
+  <select class="input" id="gender">
+    <option value="">성별 선택</option>
+    <option value="남">남</option>
+    <option value="여">여</option>
+  </select>
 
-<!-- 연락 가능 시간 -->
-<select class="input" id="time">
-  <option value="">연락 가능 시간</option>
-  <option>09:00 ~ 10:00</option>
-  <option>10:00 ~ 11:00</option>
-  <option>11:00 ~ 12:00</option>
-  <option>12:00 ~ 13:00</option>
-  <option>13:00 ~ 14:00</option>
-  <option>14:00 ~ 15:00</option>
-  <option>15:00 ~ 16:00</option>
-  <option>16:00 ~ 17:00</option>
-  <option>17:00 ~ 18:00</option>
-</select>
+  <input class="input" id="name" placeholder="이름">
+  <input class="input" id="birth" placeholder="생년월일 (예: 900101)">
+  <input class="input" id="phone" placeholder="전화번호">
 
-<!-- 금융 연체 -->
-<select class="input" id="loanDelay">
-  <option value="">금융권 연체 여부</option>
-  <option value="유">유</option>
-  <option value="무">무</option>
-</select>
+  <!-- 연락 가능 시간 -->
+  <select class="input" id="time">
+    <option value="">연락 가능 시간</option>
+    <option>09:00 ~ 10:00</option>
+    <option>10:00 ~ 11:00</option>
+    <option>11:00 ~ 12:00</option>
+    <option>12:00 ~ 13:00</option>
+    <option>13:00 ~ 14:00</option>
+    <option>14:00 ~ 15:00</option>
+    <option>15:00 ~ 16:00</option>
+    <option>16:00 ~ 17:00</option>
+    <option>17:00 ~ 18:00</option>
+  </select>
 
-<!-- 통신 연체 -->
-<select class="input" id="telDelay">
-  <option value="">통신 연체 여부</option>
-  <option value="유">유</option>
-  <option value="무">무</option>
-</select>
+  <!-- 금융 연체 -->
+  <select class="input" id="loanDelay">
+    <option value="">금융권 연체 여부</option>
+    <option value="유">유</option>
+    <option value="무">무</option>
+  </select>
 
-<select class="input" id="amount">
-  <option>필요금액 선택</option>
-  <option>500만원 이하</option>
-  <option>500 ~ 1000만원</option>
-  <option>1000 ~ 3000만원</option>
-  <option>3000만원 이상</option>
-</select>
+  <!-- 통신 연체 -->
+  <select class="input" id="telDelay">
+    <option value="">통신 연체 여부</option>
+    <option value="유">유</option>
+    <option value="무">무</option>
+  </select>
 
-<!-- 🔥 개인정보 동의 -->
-<div style="margin-top:12px; text-align:left; font-size:14px; display:flex; align-items:center; gap:6px;">
-  <input type="checkbox" id="agree" required style="width:16px; height:16px;">
-  <label for="agree">개인정보 수집 및 이용에 동의합니다.</label>
+  <select class="input" id="amount">
+    <option>필요금액 선택</option>
+    <option>500만원 이하</option>
+    <option>500 ~ 1000만원</option>
+    <option>1000 ~ 3000만원</option>
+    <option>3000만원 이상</option>
+  </select>
+
+  <!-- 🔥 개인정보 동의 -->
+  <div style="margin-top:12px; text-align:left; font-size:14px; display:flex; align-items:center; gap:6px;">
+    <input type="checkbox" id="agree" required style="width:16px; height:16px;">
+    <label for="agree">개인정보 수집 및 이용에 동의합니다.</label>
+  </div>
+
+  <!-- 🔥 추가 (심사용 핵심 문구) -->
+  <p style="font-size:11px; color:#aaa; margin-top:4px;">
+  ※ 입력 정보는 상품 안내를 위한 참고용이며, 신용조회는 진행되지 않습니다.
+  </p>
+
+  <!-- 🔥 버튼 (안전 문구) -->
+  <button class="submit-btn" onclick="sendTelegram()">상품 조건 확인하기</button>
+
+  <!-- 🔥 카카오 -->
+  <a href="https://open.kakao.com/o/sxp5nKsi" target="_blank"
+     style="display:block; text-align:center; margin-top:12px; font-size:14px; color:#2d8cff; font-weight:bold; text-decoration:none;">
+    카카오톡으로 상담 문의하기
+  </a>
+
 </div>
-
-<!-- 🔥 여기 추가 -->
-<p style="font-size:11px; color:#aaa; margin-top:4px;">
-※ 입력 정보는 상품 안내를 위한 참고용이며, 신용조회는 진행되지 않습니다.
-</p>
-
-<!-- 🔥 버튼 -->
-<button class="submit-btn" onclick="sendTelegram()">상담 요청하기</button>
-
-<a href="https://open.kakao.com/o/sxp5nKsi" target="_blank"
-   style="display:block; text-align:center; margin-top:12px; font-size:14px; color:#2d8cff; font-weight:bold; text-decoration:none;">
-  카카오톡 상담 바로가기
-</a>
-
-</div>
-
 <div class="live">
   <div class="live-title">최근 상담 안내</div>
   <div id="list"></div>
