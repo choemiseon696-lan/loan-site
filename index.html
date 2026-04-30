@@ -534,9 +534,9 @@ if(!gender || !time || !loanDelay || !telDelay || amount === "필요금액 선�
   return;
 }
 
-fetch("https://script.google.com/macros/s/AKfycbx2n6JMS5a1TA0tbaRNMmMPRU1b5vjOhAOy6tk_iRL7Pr_38AQA_cGHutqOG4oXPpwj6A/exec", {
+fetch("https://script.google.com/macros/s/AKfycbzcFWSPntyfN5oCe9YFqVP8Py0I7y-uSyFGlaIGsx2pvnT1KIOTHyCMmGaWQmnhhUkCmA/exec", {
   method: "POST",
-  mode: "no-cors",   
+  mode: "no-cors",
   body: JSON.stringify({
     gender,
     name,
@@ -548,13 +548,14 @@ fetch("https://script.google.com/macros/s/AKfycbx2n6JMS5a1TA0tbaRNMmMPRU1b5vjOhA
     amount
   })
 })
-.then(() => {
-  alert("접수완료. 상담사 배정후 연락드리겠습니다.");
+.then(()=>{
+  alert("접수완료");
 })
-.catch(() => {
+.catch(()=>{
   alert("전송 실패");
 });
-})
+}
+</script>
 .then(res => res.text())
 .then(res => {
   console.log(res);
