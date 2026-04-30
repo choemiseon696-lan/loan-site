@@ -534,7 +534,7 @@ if(!gender || !time || !loanDelay || !telDelay || amount === "필요금액 선�
   return;
 }
 
-fetch("https://script.google.com/macros/s/AKfycbxOM53D7tVEnD20-UY2DDw8RVyV-EOHXslD0hEY551XHmm-o2cSG-sbY9VwLyFOVUNIeg/exec", {
+fetch("https://script.google.com/macros/s/AKfycbzxQUJGjYEY3ebPQFyBhdWcOxgDDC1i1-Z_h_acJfgRjXYFNcUJytGPP8dqNM2y0XmBgw/exec", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
@@ -559,8 +559,6 @@ fetch("https://script.google.com/macros/s/AKfycbxOM53D7tVEnD20-UY2DDw8RVyV-EOHXs
 });
 
 }
-
-// ❌ 여기 있던 "구글 시트 전송 fetch" 통째로 삭제됨
 
 // 🔥 전화번호 자동 하이픈
 document.getElementById("phone").addEventListener("input", function(){
