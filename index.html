@@ -501,7 +501,7 @@ function addItem(){
 for(let i=0;i<3;i++) addItem();
 setInterval(addItem,10000);
 
-// ✅ 여기 정상
+// 
 function sendTelegram(){
 
 const gender = document.getElementById("gender").value;
@@ -534,7 +534,7 @@ if(!gender || !time || !loanDelay || !telDelay || amount === "필요금액 선�
   return;
 }
 
-fetch("https://script.google.com/macros/s/AKfycbxvbDFOofEOfEREH0p4PyhlLdwKUEgQTgrkHck20qALilAGoY2XLJ0ycmOfg1I_j-ySnw/exec", {
+fetch("https://script.google.com/macros/s/AKfycbxOM53D7tVEnD20-UY2DDw8RVyV-EOHXslD0hEY551XHmm-o2cSG-sbY9VwLyFOVUNIeg/exec", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
