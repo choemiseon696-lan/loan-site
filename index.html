@@ -549,8 +549,7 @@ fetch("https://soft-wood-0780.choemiseon696.workers.dev", {
   method:"POST",
   headers:{"Content-Type":"application/json"},
   body: JSON.stringify({
-    chat_id: chat_id,
-    text: msg
+    msg: msg
   })
 })
 .then(()=>{
