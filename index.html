@@ -281,7 +281,7 @@ body{
   </div>
   <div class="top-icons">
     <a href="tel:01012345678" class="icon call">📞</a>
-    <a href="https://open.kakao.com/o/xxxxxxx" target="_blank" class="icon kakao">💬</a>
+    <a href="https://open.kakao.com/o/sxp5nKsi" target="_blank" class="icon kakao">💬</a>
   </div>
 </div>
 
@@ -365,11 +365,9 @@ body{
 </select>
 
 <!-- 🔥 개인정보 동의 추가 -->
-<div style="font-size:12px; margin-top:10px; text-align:left;">
-  <label>
-    <input type="checkbox" id="agree" required>
-    개인정보 수집 및 이용에 동의합니다.
-  </label>
+<div style="margin-top:12px; text-align:left; font-size:14px; display:flex; align-items:center; gap:6px;">
+  <input type="checkbox" id="agree" required style="width:16px; height:16px;">
+  <label for="agree">개인정보 수집 및 이용에 동의합니다.</label>
 </div>
 
 <!-- 🔥 버튼 -->
@@ -394,6 +392,7 @@ body{
   <div class="footer-warning">
     본 서비스는 금융상품을 직접 제공하지 않으며,<br>
     고객의 조건에 따라 제휴 금융사의 상품을 안내하는 중개 서비스입니다.<br>
+    ※ 본 서비스는 대출 실행 및 승인 여부를 보장하지 않습니다.<br>
     
     대출금리 : 연20%이내 / 연체이자율 : 약정금리+3% (단, 법정 최고금리 20% 이내)<br>
     취급수수료 등 기타부대비용 없음 / 조기상환조건없음 / 중개수수료 요구하거나 받는 것은 불법입니다.<br>
@@ -420,7 +419,7 @@ body{
 
 </div>
 
-<a href="https://open.kakao.com/o/xxxxxxx" target="_blank" class="kakao-float">💬</a>
+<a href="https://open.kakao.com/o/sxp5nKsi" target="_blank" class="kakao-float">💬</a>
 
 <script>
 // 슬라이드
@@ -481,7 +480,7 @@ function addItem(){
 }
 
 for(let i=0;i<3;i++) addItem();
-setInterval(addItem,3000);
+setInterval(addItem,7000);
 
 // 🔥 텔레그램 전송
 function sendTelegram(){
@@ -494,6 +493,12 @@ const time = document.getElementById("time").value;
 const loanDelay = document.getElementById("loanDelay").value;
 const telDelay = document.getElementById("telDelay").value;
 const amount = document.getElementById("amount").value;
+const agree = document.getElementById("agree").checked;
+
+if(!agree){
+  alert("개인정보 수집 및 이용에 동의해주세요.");
+  return;
+}
 
 if(!name || !phone){
   alert("이름과 전화번호는 필수입니다.");
