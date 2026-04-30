@@ -501,7 +501,6 @@ function addItem(){
 for(let i=0;i<3;i++) addItem();
 setInterval(addItem,10000);
 
-// 🔥 텔레그램 전송
 function sendTelegram(){
 
 const gender = document.getElementById("gender").value;
@@ -529,37 +528,26 @@ if(!/^\d{6}$/.test(birth)){
   return;
 }
 
-// 🔥 여기 추가
 if(!gender || !time || !loanDelay || !telDelay || amount === "필요금액 선택"){
   alert("모든 항목을 선택해주세요.");
   return;
 }
 
-const msg = `📌 상담 신청 접수
-성별: ${gender}
-이름: ${name}
-생년월일: ${birth}
-전화번호: ${phone}
-연락가능시간: ${time}
-금융연체: ${loanDelay}
-통신연체: ${telDelay}
-희망금액: ${amount}`;
-
-// 텔레그램
 fetch("https://script.google.com/macros/s/AKfycbxvbDFOofEOfEREH0p4PyhlLdwKUEgQTgrkHck20qALilAGoY2XLJ0ycmOfg1I_j-ySnw/exec", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
   },
+  mode: "no-cors",
   body: JSON.stringify({
-    gender: gender,
-    name: name,
-    birth: birth,
-    phone: phone,
-    time: time,
-    loanDelay: loanDelay,
-    telDelay: telDelay,
-    amount: amount
+    gender,
+    name,
+    birth,
+    phone,
+    time,
+    loanDelay,
+    telDelay,
+    amount
   })
 })
 .then(()=>{
@@ -568,6 +556,8 @@ fetch("https://script.google.com/macros/s/AKfycbxvbDFOofEOfEREH0p4PyhlLdwKUEgQTg
 .catch(()=>{
   alert("전송 실패");
 });
+
+}
 
   // 🔥 구글 시트 전송
   fetch("https://script.google.com/macros/s/AKfycbxvbDFOofEOfEREH0p4PyhlLdwKUEgQTgrkHck20qALilAGoY2XLJ0ycmOfg1I_j-ySnw/exec", {
