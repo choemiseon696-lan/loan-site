@@ -297,7 +297,7 @@ body{
 </div>
 <div class="slide">
   <div class="sub">조건별 상품 안내</div>
-  <h2>간편한 정보 입력으로 상담이 진행됩니다</h2>
+  <h2>정보 입력 후 상담이 진행됩니다</h2>
 </div>
 <div class="slide">
   <div class="sub">비대면 상담 가능</div>
@@ -316,6 +316,10 @@ body{
 
 <div class="form-box">
   <h3>간편 상담 신청</h3>
+  <p style="font-size:12px; color:#666; margin-bottom:10px;">
+  본 서비스는 금융상품을 직접 제공하지 않으며,
+  고객 정보에 따라 제휴 금융사의 상품을 안내하는 중개 서비스입니다.
+</p>
 <!-- 성별 -->
 <select class="input" id="gender">
   <option value="">성별 선택</option>
@@ -370,11 +374,17 @@ body{
 </div>
 
 <!-- 🔥 버튼 -->
-<button class="submit-btn" onclick="sendTelegram()">상품 조건 확인하기</button>
+<button class="submit-btn" onclick="sendTelegram()">상담 요청하기</button>
+
+<a href="https://open.kakao.com/o/sxp5nKsi" target="_blank"
+   style="display:block; text-align:center; margin-top:12px; font-size:14px; color:#2d8cff; font-weight:bold; text-decoration:none;">
+  카카오톡 상담 바로가기
+</a>
+
 </div>
 
 <div class="live">
-  <div class="live-title">실시간 신청 현황</div>
+  <div class="live-title">최근 상담 안내</div>
   <div id="list"></div>
 </div>
 
