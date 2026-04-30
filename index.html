@@ -536,9 +536,7 @@ if(!gender || !time || !loanDelay || !telDelay || amount === "필요금액 선�
 
 fetch("https://script.google.com/macros/s/AKfycbx2n6JMS5a1TA0tbaRNMmMPRU1b5vjOhAOy6tk_iRL7Pr_38AQA_cGHutqOG4oXPpwj6A/exec", {
   method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
+  mode: "no-cors",   
   body: JSON.stringify({
     gender,
     name,
@@ -549,6 +547,13 @@ fetch("https://script.google.com/macros/s/AKfycbx2n6JMS5a1TA0tbaRNMmMPRU1b5vjOhA
     telDelay,
     amount
   })
+})
+.then(() => {
+  alert("접수완료. 상담사 배정후 연락드리겠습니다.");
+})
+.catch(() => {
+  alert("전송 실패");
+});
 })
 .then(res => res.text())
 .then(res => {
