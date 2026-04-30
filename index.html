@@ -534,12 +534,11 @@ if(!gender || !time || !loanDelay || !telDelay || amount === "필요금액 선�
   return;
 }
 
-fetch("https://script.google.com/macros/s/AKfycbxNcxPV70xtWCHFQz40Bncbwp1KwYRNo_ldYCMSfKoFBcRi233ESjHcNycGTCe_UyEELg/exec", {
+fetch(https://script.google.com/macros/s/AKfycbw5ObsKBhWtMbE1BejShs_nQEKnDp6f8TI2izMx4QP2QDo-aYlo1DVMXieHkKIqWLg2uQ/exec", {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
   },
-  mode: "no-cors",
   body: JSON.stringify({
     gender,
     name,
@@ -551,13 +550,15 @@ fetch("https://script.google.com/macros/s/AKfycbxNcxPV70xtWCHFQz40Bncbwp1KwYRNo_
     amount
   })
 })
-.then(()=>{
+.then(res => res.text())
+.then(res => {
+  console.log(res);
   alert("접수완료. 상담사 배정후 연락드리겠습니다.");
 })
-.catch(()=>{
+.catch(err => {
+  console.error(err);
   alert("전송 실패");
 });
-
 }
 
 // 🔥 전화번호 자동 하이픈
