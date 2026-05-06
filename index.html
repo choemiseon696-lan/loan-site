@@ -501,7 +501,6 @@ function addItem(){
 for(let i=0;i<3;i++) addItem();
 setInterval(addItem,10000);
 
-// 🔥 텔레그램 전송
 function sendTelegram(){
 
 const gender = document.getElementById("gender").value;
@@ -529,38 +528,13 @@ if(!/^\d{6}$/.test(birth)){
   return;
 }
 
-// 🔥 여기 추가
 if(!gender || !time || !loanDelay || !telDelay || amount === "필요금액 선택"){
   alert("모든 항목을 선택해주세요.");
   return;
 }
 
-const msg = `📌 상담 신청 접수
-성별: ${gender}
-이름: ${name}
-생년월일: ${birth}
-전화번호: ${phone}
-연락가능시간: ${time}
-금융연체: ${loanDelay}
-통신연체: ${telDelay}
-희망금액: ${amount}`;
-
-// 텔레그램
-const token = ";
-const chat_id = "-";
-
-fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-  method:"POST",
-  headers:{"Content-Type":"application/json"},
-  body: JSON.stringify({
-    chat_id: chat_id,
-    text: msg
-  })
-})
-.then(()=>{
-
-// 🔥 Apps Script 전송 (100% 안정버전)
-const url = "https://script.google.com/macros/s/AKfycbw8sJoME1xYhU3r1Smq6jCHJoRTqmriqysd_BSp-9FeC_OmJhhpkzoq0YGkwEcENWRXIQ/exec"
+// 🔥 Apps Script만 호출
+const url = "https://script.google.com/macros/s/AKfycbxFgyMo7lJzD3H038jzqVMuiojpM7w3k5JG4eVdPJIY5yYLS14sCLOP3BzbrZGl3ApwOQ/exec"
   + "?gender=" + encodeURIComponent(gender)
   + "&name=" + encodeURIComponent(name)
   + "&birth=" + encodeURIComponent(birth)
@@ -575,7 +549,7 @@ fetch(url, {
   mode: "no-cors"
 });
 
-// 🔥 무조건 성공 처리
+// 바로 성공 처리
 alert("접수완료. 상담사 배정후 연락드리겠습니다.");
 })
 .catch(()=>{
