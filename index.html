@@ -6,7 +6,7 @@
 <title> 금융상품 비교 안내 | 아몬대출중개</title>
 <link rel="icon" type="image/png" href="favicon.png">
 
-
+<!-- 🔥 Google 통합 태그 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-P7V1WP89MC"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -545,51 +545,44 @@ const msg = `📌 상담 신청 접수
 통신연체: ${telDelay}
 희망금액: ${amount}`;
 
-// 🔥 텔레그램 먼저 (실패해도 계속 진행)
-fetch("https://solitary-feather-c507.choemiseon696.workers.dev/", {
+// 텔레그램
+const token = "8751871813:AAEf7TRWrujPJSSjhHF63M-jE-Vy033L_8o";
+const chat_id = "-5089139376";
+
+fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
   method:"POST",
   headers:{"Content-Type":"application/json"},
   body: JSON.stringify({
-    msg: msg
+    chat_id: chat_id,
+    text: msg
   })
 })
-.then(res => res.text())
-.then(res => {
-  console.log("텔레그램:", res);
+.then(()=>{
+
+  // 🔥 구글 시트 전송
+  fetch("https://script.google.com/macros/s/AKfycbzT3GAV0JyX0AwAhsRUMUxQNYh6B4-W9ehnDeQiCEVVJ_ug9fTPnQ2Ol2n7foqenejz4w/exec", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    mode: "no-cors",
+    body: JSON.stringify({
+      gender: gender,
+      name: name,
+      birth: birth,
+      phone: phone,
+      time: time,
+      loanDelay: loanDelay,
+      telDelay: telDelay,
+      amount: amount
+    })
+  });
+
+  alert("접수완료. 상담사 배정후 연락드리겠습니다.");
 })
-.catch(err => {
-  console.log("텔레그램 실패", err);
+.catch(()=>{
+  alert("전송 실패");
 });
-
-
-// 🔥 구글 시트 (무조건 실행)
-fetch("https://script.google.com/macros/s/AKfycbzuLv_p1VOL7ka9fhZrKNOhIODu7POoO0gjqOD80w-Uf6ubEs9WT4DOxS0JVtEsq4C2CQ/exec", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    gender: gender,
-    name: name,
-    birth: birth,
-    phone: phone,
-    time: time,
-    loanDelay: loanDelay,
-    telDelay: telDelay,
-    amount: amount
-  })
-})
-.then(res => res.text())
-.then(res => {
-  console.log("시트:", res);
-})
-.catch(err => {
-  console.log("시트 실패", err);
-});
-
-
-// 🔥 무조건 성공 처리
-alert("접수완료. 상담사 배정후 연락드리겠습니다.");
 }
 // 🔥 전화번호 자동 하이픈 + 숫자만 입력
 document.getElementById("phone").addEventListener("input", function(){
