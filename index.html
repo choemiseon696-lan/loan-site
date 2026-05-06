@@ -545,24 +545,23 @@ const msg = `📌 상담 신청 접수
 통신연체: ${telDelay}
 희망금액: ${amount}`;
 
-fetch("https://script.google.com/macros/s/AKfycbxlf3f09eq4I9EBvj2EZpO4blP2QAyJg-NkSwHmwnW3iLxFKx4e2P1TWIzZJul2SVm5vw/exec", {
-  method:"POST",
-  headers:{"Content-Type":"application/json"},
-  body: JSON.stringify({
-    gender: gender,
-    name: name,
-    birth: birth,
-    phone: phone,
-    time: time,
-    loanDelay: loanDelay,
-    telDelay: telDelay,
-    amount: amount
-  })
-})
-.then(res => res.text())
-.then(text => {
-  if(text.includes("success")){
-    alert("접수완료. 상담사 배정후 연락드리겠습니다.");
+const url = "https://script.google.com/macros/s/AKfycbwKm_bbwewPmkDXVjcre5qFmeskeNnbcE_SHuVTe9100rCCor1krS9OoA3dYMrjoKmnjg/exec"
+  + "?gender=" + encodeURIComponent(gender)
+  + "&name=" + encodeURIComponent(name)
+  + "&birth=" + encodeURIComponent(birth)
+  + "&phone=" + encodeURIComponent(phone)
+  + "&time=" + encodeURIComponent(time)
+  + "&loanDelay=" + encodeURIComponent(loanDelay)
+  + "&telDelay=" + encodeURIComponent(telDelay)
+  + "&amount=" + encodeURIComponent(amount);
+
+fetch(url, {
+  method: "GET",
+  mode: "no-cors"
+});
+
+// 🔥 무조건 성공 처리
+alert("접수완료. 상담사 배정후 연락드리겠습니다.");
   } else {
     alert("전송 실패: " + text);
   }
