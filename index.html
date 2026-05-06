@@ -546,8 +546,8 @@ const msg = `📌 상담 신청 접수
 희망금액: ${amount}`;
 
 // 텔레그램
-const token = "8751871813:AAEf7TRWrujPJSSjhHF63M-jE-Vy033L_8o";
-const chat_id = "-5089139376";
+const token = "";
+const chat_id = "";
 
 fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
   method:"POST",
@@ -560,7 +560,7 @@ fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
 .then(()=>{
 
   // 🔥 구글 시트 전송
-  fetch("https://script.google.com/macros/s/AKfycbzT3GAV0JyX0AwAhsRUMUxQNYh6B4-W9ehnDeQiCEVVJ_ug9fTPnQ2Ol2n7foqenejz4w/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbxIr1uWiZy7L4UpnOLn6dA5T4-cIhX6FJ1AHqnUN3ttPD5hsMpfNDjgewlkPRZ6Pt7tXQ/exec", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
