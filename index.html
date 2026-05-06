@@ -547,14 +547,11 @@ const url = "https://script.google.com/macros/s/AKfycbxFgyMo7lJzD3H038jzqVMuiojp
 fetch(url, {
   method: "GET",
   mode: "no-cors"
-});
+})
+.catch(()=>{});
 
 // 바로 성공 처리
 alert("접수완료. 상담사 배정후 연락드리겠습니다.");
-})
-.catch(()=>{
-  alert("전송 실패");
-});
 }
 // 🔥 전화번호 자동 하이픈 + 숫자만 입력
 document.getElementById("phone").addEventListener("input", function(){
