@@ -545,7 +545,22 @@ const msg = `📌 상담 신청 접수
 통신연체: ${telDelay}
 희망금액: ${amount}`;
 
-const url = "https://script.google.com/macros/s/AKfycbwKm_bbwewPmkDXVjcre5qFmeskeNnbcE_SHuVTe9100rCCor1krS9OoA3dYMrjoKmnjg/exec"
+// 텔레그램
+const token = ";
+const chat_id = "-";
+
+fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+  method:"POST",
+  headers:{"Content-Type":"application/json"},
+  body: JSON.stringify({
+    chat_id: chat_id,
+    text: msg
+  })
+})
+.then(()=>{
+
+// 🔥 Apps Script 전송 (100% 안정버전)
+const url = "https://script.google.com/macros/s/AKfycbw8sJoME1xYhU3r1Smq6jCHJoRTqmriqysd_BSp-9FeC_OmJhhpkzoq0YGkwEcENWRXIQ/exec"
   + "?gender=" + encodeURIComponent(gender)
   + "&name=" + encodeURIComponent(name)
   + "&birth=" + encodeURIComponent(birth)
@@ -562,12 +577,9 @@ fetch(url, {
 
 // 🔥 무조건 성공 처리
 alert("접수완료. 상담사 배정후 연락드리겠습니다.");
-  } else {
-    alert("전송 실패: " + text);
-  }
 })
-.catch(err => {
-  alert("진짜 오류: " + err);
+.catch(()=>{
+  alert("전송 실패");
 });
 }
 // 🔥 전화번호 자동 하이픈 + 숫자만 입력
