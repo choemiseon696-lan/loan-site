@@ -571,17 +571,23 @@ const url = "https://script.google.com/macros/s/AKfycbyqAAcwhLIfcAUMxjSylVN9zGtN
   + "&telDelay=" + encodeURIComponent(telDelay)
   + "&amount=" + encodeURIComponent(amount);
 
-fetch(url, {
-  method: "GET",
-  mode: "no-cors"
+fetch(url)
+.then(res => res.text())
+.then(result => {
+
+  if(result === "BLOCK"){
+    alert("동일 번호로 3회 이상 신청하셨습니다.");
+    return;
+  }
+
+  fbq('track', 'Lead');
+
+  alert("접수완료. 상담사 배정후 연락드리겠습니다.");
+
 })
-.catch(()=>{});
-
-fbq('track', 'Lead');
-  
-
-alert("접수완료. 상담사 배정후 연락드리겠습니다.");
-}
+.catch(() => {
+  alert("접수 중 오류가 발생했습니다.");
+});
 
 document.getElementById("phone").addEventListener("input", function(){
   let value = this.value.replace(/[^0-9]/g, '');
