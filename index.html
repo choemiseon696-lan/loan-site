@@ -108,6 +108,77 @@ body{
   font-size:12px;line-height:1.6;
 }
 .footer-top,.footer-warning,.footer-info{margin-bottom:25px;}
+
+/* 개인정보처리방침 / 이용약관 팝업 */
+.policy-modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.58);
+  z-index:99999;
+  padding:20px;
+}
+.policy-box{
+  width:100%;
+  max-width:430px;
+  max-height:82vh;
+  margin:65px auto 0;
+  background:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(0,0,0,0.28);
+  animation:modalUp .2s ease-out;
+}
+@keyframes modalUp{
+  from{transform:translateY(18px);opacity:0;}
+  to{transform:translateY(0);opacity:1;}
+}
+.policy-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:18px 18px 14px;
+  border-bottom:1px solid #eee;
+}
+.policy-head h3{
+  font-size:18px;
+  color:#111;
+  margin:0;
+}
+.policy-close{
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:50%;
+  background:#f2f4f7;
+  color:#222;
+  font-size:22px;
+  line-height:34px;
+  cursor:pointer;
+}
+.policy-content{
+  max-height:62vh;
+  overflow-y:auto;
+  padding:18px;
+  font-size:12px;
+  line-height:1.75;
+  color:#444;
+  text-align:left;
+  word-break:keep-all;
+}
+.policy-content p{margin-bottom:14px;}
+.policy-content b{color:#111;}
+.policy-link-btn{
+  background:none;
+  border:none;
+  color:#ccc;
+  text-decoration:underline;
+  cursor:pointer;
+  font-size:12px;
+  font-family:inherit;
+}
+body.modal-open{overflow:hidden;}
+
 </style>
 </head>
 
@@ -115,7 +186,7 @@ body{
 
 <div class="top-fixed">
   <div class="top-text">
-    상호 : 아몬대출중개 | 대표 : 김진수 | 대부업 등록번호 : 2007-경기부천-대부중개65호
+    상호 : 아몬대출중개 | 대표 : 김진수 | 대부업 등록번호 : 2007-경기송파-대부중개65호
   </div>
 </div>
 
@@ -252,9 +323,20 @@ body{
   </div>
 
   <div style="margin-top:15px;">
-    <a href="/privacy.html" target="_blank" style="color:#ccc;">개인정보처리방침</a>
+    <button type="button" class="policy-link-btn" onclick="openModal('privacy')">개인정보처리방침</button>
     <span style="margin:0 8px;">|</span>
-    <a href="/terms.html" target="_blank" style="color:#ccc;">이용약관</a>
+    <button type="button" class="policy-link-btn" onclick="openModal('terms')">이용약관</button>
+  </div>
+</div>
+
+
+<div id="policyModal" class="policy-modal" onclick="modalOutsideClose(event)">
+  <div class="policy-box">
+    <div class="policy-head">
+      <h3 id="policyTitle">개인정보처리방침</h3>
+      <button type="button" class="policy-close" onclick="closeModal()">×</button>
+    </div>
+    <div id="policyContent" class="policy-content"></div>
   </div>
 </div>
 
@@ -389,6 +471,77 @@ document.getElementById("phone").addEventListener("input", function(){
     this.value = value.replace(/(\d{3})(\d{4})(\d+)/, "$1-$2-$3");
   }
 });
+
+function openModal(type){
+  const modal = document.getElementById("policyModal");
+  const title = document.getElementById("policyTitle");
+  const content = document.getElementById("policyContent");
+
+  if(type === "privacy"){
+    title.innerText = "개인정보처리방침";
+    content.innerHTML = `
+      <p>아몬대출중개는 상담 신청 및 금융상품 안내를 위해 아래와 같이 개인정보를 수집·이용합니다.</p>
+
+      <p><b>1. 수집 항목</b><br>
+      이름, 성별, 생년월일, 전화번호, 연락 가능 시간, 금융권 연체 여부, 통신 연체 여부, 필요금액</p>
+
+      <p><b>2. 수집 및 이용 목적</b><br>
+      상담 신청 확인, 본인 확인, 금융상품 상담 안내, 고객 문의 응대</p>
+
+      <p><b>3. 보유 및 이용 기간</b><br>
+      상담 목적 달성 후 관련 법령에 따라 필요한 기간 동안 보관 후 파기합니다.</p>
+
+      <p><b>4. 개인정보 제공</b><br>
+      고객님의 동의 없이 개인정보를 외부에 제공하지 않습니다. 단, 법령에 따른 요청이 있는 경우 예외로 합니다.</p>
+
+      <p><b>5. 동의 거부 권리</b><br>
+      고객님은 개인정보 수집 및 이용에 대한 동의를 거부할 수 있으며, 동의 거부 시 상담 신청이 제한될 수 있습니다.</p>
+    `;
+  }
+
+  if(type === "terms"){
+    title.innerText = "이용약관";
+    content.innerHTML = `
+      <p>본 약관은 아몬대출중개가 제공하는 금융상품 상담 및 중개 서비스 이용에 관한 사항을 정합니다.</p>
+
+      <p><b>1. 서비스 내용</b><br>
+      본 서비스는 금융상품을 직접 제공하지 않으며, 고객 조건에 따라 제휴 금융사의 상품을 안내하는 중개 서비스입니다.</p>
+
+      <p><b>2. 상담 및 승인</b><br>
+      상담 신청은 대출 실행 또는 승인을 보장하지 않습니다. 최종 승인 여부는 금융사의 심사 기준에 따라 결정됩니다.</p>
+
+      <p><b>3. 수수료 안내</b><br>
+      중개수수료를 요구하거나 받는 행위는 불법입니다. 고객에게 별도 중개수수료를 요구하지 않습니다.</p>
+
+      <p><b>4. 이용자 의무</b><br>
+      이용자는 정확한 정보를 입력해야 하며, 허위 정보 입력으로 발생하는 불이익은 이용자에게 책임이 있습니다.</p>
+
+      <p><b>5. 고지사항</b><br>
+      대출 이용 시 신용등급 또는 개인신용평점이 하락할 수 있으며, 과도한 대출은 개인 신용에 불이익을 줄 수 있습니다.</p>
+    `;
+  }
+
+  modal.style.display = "block";
+  document.body.classList.add("modal-open");
+}
+
+function closeModal(){
+  document.getElementById("policyModal").style.display = "none";
+  document.body.classList.remove("modal-open");
+}
+
+function modalOutsideClose(event){
+  if(event.target.id === "policyModal"){
+    closeModal();
+  }
+}
+
+document.addEventListener("keydown", function(event){
+  if(event.key === "Escape"){
+    closeModal();
+  }
+});
+
 </script>
 
 </body>
