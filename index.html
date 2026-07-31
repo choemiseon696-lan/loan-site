@@ -450,18 +450,20 @@ submitBtn.style.cursor = "not-allowed";
 
 const SECRET_KEY = "dream_2026_lock";
 
-const url = "https://script.google.com/macros/s/AKfycbxc4D_Me9Sey0gGsFUCTgSLMSBuNiJfz2ewONMqbsirweakx5FI1vP3nIBVMXJWNh6u/exec"
-  + "?gender=" + encodeURIComponent(gender)
-  + "&name=" + encodeURIComponent(name)
-  + "&birth=" + encodeURIComponent(birth)
-  + "&phone=" + encodeURIComponent(phone)
-  + "&time=" + encodeURIComponent(time)
-  + "&loanDelay=" + encodeURIComponent(loanDelay)
-  + "&telDelay=" + encodeURIComponent(telDelay)
-  + "&amount=" + encodeURIComponent(amount)
-  + "&secret=" + encodeURIComponent(SECRET_KEY)
-  + "&referer=" + encodeURIComponent(location.href)
-  + "&pageHost=" + encodeURIComponent(location.hostname);
+const url =
+"https://script.google.com/macros/s/AKfycbxc4D_Me9Sey0gGsFUCTgSLMSBuNiJfz2ewONMqbsirweakx5FI1vP3nIBVMXJWNh6u/exec"
++ "?secret=" + encodeURIComponent(SECRET_KEY)
++ "&gender=" + encodeURIComponent(gender)
++ "&name=" + encodeURIComponent(name)
++ "&birth=" + encodeURIComponent(birth)
++ "&phone=" + encodeURIComponent(phone)
++ "&time=" + encodeURIComponent(time)
++ "&loanDelay=" + encodeURIComponent(loanDelay)
++ "&telDelay=" + encodeURIComponent(telDelay)
++ "&amount=" + encodeURIComponent(amount)
++ "&referer=" + encodeURIComponent(document.referrer)
++ "&pageHost=" + encodeURIComponent(location.hostname)
++ "&loadedMs=" + performance.now();
 
 fetch(url)
 .then(res => res.text())
